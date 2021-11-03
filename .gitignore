@@ -11,3 +11,6 @@
 .terraform/
 .terraform.lock.hcl
 terraform.tfstate*
+
+# other
+*.zip
