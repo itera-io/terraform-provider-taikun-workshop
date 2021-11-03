@@ -162,15 +162,15 @@ skip=10pt plus 2pt,after skip=20pt plus 2pt,title=#1]
 }
 
 \newenvironment{raw}{%
-\definecolor{sectboxrulecol}{rgb}{0.8,0.8,0.8}
+\definecolor{sectboxfillcol}{rgb}{1,1,1}
 \VerbatimEnvironment{}
 \begin{center}%
 \framesectionbox{}
 \begin{sectionbox}{}
 \begin{minipage}{\linewidth}%
 \begin{Verbatim}
-[tabsize=4,xleftmargin=20pt,linenos]}
-{%
+}%
+{
 \end{Verbatim}%
 \end{minipage}%
 \end{sectionbox}
