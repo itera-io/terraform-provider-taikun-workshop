@@ -1,0 +1,13 @@
+# LaTeX
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.pdf
+*.toc
+
+# terraform
+.terraform/
+.terraform.lock.hcl
+terraform.tfstate*

@@ -1,0 +1,197 @@
+% encoding
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% dates
+\usepackage{datetime}
+
+% ensure floating graphics appear in the correct section
+\usepackage[section]{placeins}
+
+% font
+\usepackage[scaled]{helvet}
+\renewcommand\familydefault{\sfdefault} 
+\usepackage[T1]{fontenc}
+
+% frames around graphics
+\usepackage[export]{adjustbox}
+
+% url wrapping
+\usepackage[hyphens]{url}
+
+%  pagesize
+\textwidth 16cm
+\textheight 23.5cm
+\headsep 1cm
+\topmargin -1.5cm
+\oddsidemargin 0cm
+\setlength{\unitlength}{1cm}
+
+% graphs
+\usepackage{graphicx,xcolor}
+
+% math
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% quotes, code, tables
+\usepackage{alltt}
+\usepackage{fancybox}
+\usepackage{framed}
+\usepackage{sectionbox}
+\usepackage{hyperref}
+\usepackage{minted}
+\usepackage{tabularx}
+\usepackage{tcolorbox}
+\usepackage{listings}
+
+% reduce item spacing
+\usepackage{enumitem}
+\setlist[itemize]{noitemsep}
+
+% reference section number and name with command \fullref{<section_label>}
+\newcommand*{\fullref}[1]{\hyperref[{#1}]{\autoref*{#1} \textit{\nameref*{#1}}}}
+
+% make all quotes italic
+\usepackage{etoolbox}
+\AtBeginEnvironment{quote}{\itshape}
+
+\usepackage{fancyhdr}
+\newcommand{\articletitle}[2]{
+\pagestyle{fancy} \lhead{#1} \rhead{{\sc workshop}}
+\lfoot{\includegraphics[height=0.7cm]{assets/logo_itera.png}}
+\rfoot{\includegraphics[height=0.7cm]{assets/logo_terraform.png}}
+\begin{center}
+{\Large {\bf #1}}\\
+{\small {\bf #2: \formatdate{10}{11}{2021}}}\\
+\end{center}
+\bigskip}
+
+\newenvironment{fancyquote}[2]
+{
+\begin{center}
+\begin{minipage}{0.8\textwidth}
+\og \emph{#1} \fg
+\begin{flushright}
+#2
+\end{flushright}
+\end{minipage}
+\end{center}
+}
+
+\renewenvironment{leftbar}{%
+ \def\FrameCommand{\vrule width .5pt \hspace{10pt}}%
+ \MakeFramed {\advance\hsize-\width \FrameRestore}}%
+{\endMakeFramed}
+
+\newenvironment{hint}{%
+  \begin{flushright}%
+	\begin{minipage}{0.9\textwidth}%
+	\textbf{Hint}%
+	\begin{leftbar}%
+}{%
+	\end{leftbar}%
+  \end{minipage}%
+	\end{flushright}%
+}
+
+\definecolor{gfcolor}{HTML}{0074D9}
+\definecolor{tipcolor}{HTML}{33c0d0}
+\definecolor{warningcolor}{HTML}{FF851B}
+\definecolor{importantcolor}{HTML}{FF4136}
+
+\newenvironment{tip}[1]{%
+	\begin{tcolorbox}[colback=tipcolor!5!white,colframe=tipcolor!75!black,arc=0mm,before
+skip=10pt plus 2pt,after skip=20pt plus 2pt,title=#1]
+}{%
+	\end{tcolorbox}
+}
+
+\newenvironment{gf}[1]{%
+	\begin{tcolorbox}[colback=gfcolor!5!white,colframe=gfcolor!75!black,arc=1mm,before
+skip=10pt plus 2pt,after skip=20pt plus 2pt,title=#1]
+}{%
+	\end{tcolorbox}
+}
+
+\newenvironment{warning}[1]{%
+	\begin{tcolorbox}[colback=warningcolor!5!white,colframe=warningcolor!75!black,arc=1mm,before
+skip=10pt plus 2pt,after skip=20pt plus 2pt,title=#1]
+}{%
+	\end{tcolorbox}
+}
+
+\newenvironment{important}[1]{%
+	\begin{tcolorbox}[colback=importantcolor!5!white,colframe=importantcolor!75!black,arc=1mm,before
+skip=10pt plus 2pt,after skip=20pt plus 2pt,title=#1]
+}{%
+	\end{tcolorbox}
+}
+
+\newenvironment{code}{%
+\definecolor{sectboxrulecol}{rgb}{0.8,0.8,0.8}
+\VerbatimEnvironment{}
+\begin{center}%
+\framesectionbox{}
+\begin{sectionbox}{}
+\begin{minipage}{\linewidth}%
+\begin{minted}[tabsize=4,xleftmargin=20pt,linenos]{csharp}}
+{%
+\end{minted}%
+\end{minipage}%
+\end{sectionbox}
+\end{center}}
+
+\newenvironment{shell}%
+{
+\definecolor{sectboxrulecol}{rgb}{0.8,0.8,0.8}
+\VerbatimEnvironment{}
+\begin{center}
+\framesectionbox{}
+\begin{sectionbox}{}
+\begin{minipage}{0.9\textwidth}
+\begin{Verbatim}
+}%
+{
+\end{Verbatim}
+\end{minipage}
+\end{sectionbox}
+\end{center}
+}
+
+\newenvironment{raw}{%
+\definecolor{sectboxrulecol}{rgb}{0.8,0.8,0.8}
+\VerbatimEnvironment{}
+\begin{center}%
+\framesectionbox{}
+\begin{sectionbox}{}
+\begin{minipage}{\linewidth}%
+\begin{Verbatim}
+[tabsize=4,xleftmargin=20pt,linenos]}
+{%
+\end{Verbatim}%
+\end{minipage}%
+\end{sectionbox}
+\end{center}}
+
+\lstset{
+  language=[Sharp]C,
+  basicstyle=\ttfamily\small,
+  frame=single,
+  keywordstyle=\bfseries,
+  showstringspaces=false,
+}
+
+\lstdefinestyle{tree}{
+  literate=
+    {├}{{\smash{\raisebox{-1ex}{\rule{1pt}{\baselineskip}}}\raisebox{0.5ex}{\rule{2ex}{1pt}}}}1
+    {─}{{\raisebox{0.5ex}{\rule{1.5ex}{1pt}}}}1
+    {└}{{\smash{\raisebox{0.5ex}{\rule{1pt}{\dimexpr\baselineskip-1.5ex}}}\raisebox{0.5ex}{\rule{2ex}{1pt}}}}1
+    {│}{{\smash{\raisebox{-1ex}{\rule{1pt}{\baselineskip}}}\raisebox{0.5ex}{\rule{2ex}{0pt}}}}1
+    {+}{{\smash{\raisebox{-1ex}{\rule{1pt}{\baselineskip}}}\raisebox{0.5ex}{\rule{2ex}{1pt}}}}1
+    {-}{{\raisebox{0.5ex}{\rule{1.5ex}{1pt}}}}1
+    {=}{{\smash{\raisebox{0.5ex}{\rule{1pt}{\dimexpr\baselineskip-1.5ex}}}\raisebox{0.5ex}{\rule{2ex}{1pt}}}}1
+    {|}{{\smash{\raisebox{-1ex}{\rule{1pt}{\baselineskip}}}\raisebox{0.5ex}{\rule{2ex}{0pt}}}}1
+}
