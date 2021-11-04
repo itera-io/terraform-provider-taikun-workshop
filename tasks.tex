@@ -1,8 +1,40 @@
+\section{Authentication}
+In order to complete the tasks that follow, you will need to provide Taikun credentials to Terraform.
+As some of the tasks require Partner privileges, please use a Partner or Admin account.\\
+
+We will not explain how to provide sensitive input variables to Terraform as those concerns are outside the scope of this
+workshop. % or should we let people do this setup themselves?
+To find out more about this topic, see this \href{https://learn.hashicorp.com/tutorials/terraform/sensitive-variables}{Hashicorp tutorial}.
+A script is thus provided to manage Taikun authentication.
+Run it and provide your credentials as follows. The script only needs to be run once.
+\begin{shell}
+./setup.sh
+\end{shell}
+\begin{raw}
+Enter your Taikun email:
+> jane.doe@itera.io
+Enter your Taikun password:
+> password123
+\end{raw}
+
+
 \section{Tasks}
+\begin{warn}{Important}
+  Throughout this workshop, in order to avoid conflicts and
+  to permit easy clean up of leftover infrastructure, please follow the naming conventions used below.\\
+
+  All resources names will follow the format \texttt{tfws-<n>-<firstname>-<s>}, where:
+  \begin{itemize}
+    \item \texttt{<n>} is the task number
+    \item \texttt{<firstname>} is your firstname
+    \item \texttt{<s>} is an arbitrary string of your choosing
+  \end{itemize}
+  For example, while completing task 9, Jane Doe might name their Taikun project
+  \texttt{tfws-9-jane-mysuperproject}.
+\end{warn}
+
 \subsection{Task 0}
-
-\begin{tip}{Note}
+\begin{note}{Note}
 For this task, please switch into the \texttt{task\_00} directory.
-\end{tip}
-
+\end{note}
 \blindtext{}

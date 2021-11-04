@@ -41,11 +41,17 @@
 \usepackage{fancybox}
 \usepackage{framed}
 \usepackage{sectionbox}
-\usepackage{hyperref}
 \usepackage{minted}
 \usepackage{tabularx}
 \usepackage{tcolorbox}
 \usepackage{listings}
+
+% url colors
+\usepackage[colorlinks = true,
+            linkcolor = black,
+            urlcolor  = blue,
+            citecolor = black,
+            anchorcolor = black]{hyperref}
 
 % reduce item spacing
 \usepackage{enumitem}
@@ -97,34 +103,18 @@
 	\end{flushright}%
 }
 
-\definecolor{gfcolor}{HTML}{0074D9}
-\definecolor{tipcolor}{HTML}{33c0d0}
-\definecolor{warningcolor}{HTML}{FF851B}
-\definecolor{importantcolor}{HTML}{FF4136}
+\definecolor{notecolor}{HTML}{0074D9}
+\definecolor{warncolor}{HTML}{FF851B}
 
-\newenvironment{tip}[1]{%
-	\begin{tcolorbox}[colback=tipcolor!5!white,colframe=tipcolor!75!black,arc=0mm,before
+\newenvironment{note}[1]{%
+	\begin{tcolorbox}[colback=notecolor!5!white,colframe=notecolor!75!black,arc=0mm,before
 skip=10pt plus 2pt,after skip=20pt plus 2pt,title=#1]
 }{%
 	\end{tcolorbox}
 }
 
-\newenvironment{gf}[1]{%
-	\begin{tcolorbox}[colback=gfcolor!5!white,colframe=gfcolor!75!black,arc=0mm,before
-skip=10pt plus 2pt,after skip=20pt plus 2pt,title=#1]
-}{%
-	\end{tcolorbox}
-}
-
-\newenvironment{warning}[1]{%
-	\begin{tcolorbox}[colback=warningcolor!5!white,colframe=warningcolor!75!black,arc=0mm,before
-skip=10pt plus 2pt,after skip=20pt plus 2pt,title=#1]
-}{%
-	\end{tcolorbox}
-}
-
-\newenvironment{important}[1]{%
-	\begin{tcolorbox}[colback=importantcolor!5!white,colframe=importantcolor!75!black,arc=0mm,before
+\newenvironment{warn}[1]{%
+	\begin{tcolorbox}[colback=warncolor!5!white,colframe=warncolor!75!black,arc=0mm,before
 skip=10pt plus 2pt,after skip=20pt plus 2pt,title=#1]
 }{%
 	\end{tcolorbox}

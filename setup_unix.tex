@@ -1,8 +1,49 @@
-\section{Requirements}
-You must have Terraform version 0.14 or newer installed (see \href{https://www.terraform.io/downloads.html}{Download Terraform}).
+\section{Setup}
 
-\section{Installing the provider locally}
-Until the provider is listed on Terraform's plugin \href{https://registry.terraform.io/browse/providers}{registry}, the provider must be installed locally.
+You can choose to install Terraform and the Taikun provider on your machine and
+then download the workshop files.
+However, if you wish to use the prebuilt Docker image which already contains
+the workshop files, skip ahead to \fullref{sec:docker}.
+
+\subsection{Terraform installation}
+You must have Terraform version 0.14 or newer installed.
+\subsubsection{MacOS with Homebrew}
+\begin{shell}
+brew tap hashicorp/tap
+brew update
+brew install hashicorp/tap/terraform
+\end{shell}
+
+\subsubsection{Ubuntu/Debian with Apt}
+\begin{shell}
+sudo apt-get update && sudo apt-get install -y gnupg software-properties-common curl
+curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+sudo apt-add-repository \
+"deb [arch=amd64] https://apt.releases.hashicorp.com `lsb_release -cs` main"
+sudo apt-get update && sudo apt-get install terraform
+\end{shell}
+
+\subsubsection{Archlinux with Pacman}
+\begin{shell}
+sudo pacman -S terraform
+\end{shell}
+
+\subsubsection{Manually}
+Download the proper package from the \href{https://www.terraform.io/downloads.html}{Download Terraform} page and unzip it to extract the \texttt{terraform} binary.\\
+List the directories in your \texttt{PATH}.
+\begin{shell}
+echo $PATH
+\end{shell}
+Place the \texttt{terraform} binary in one of the listed directories (avoid putting it in \texttt{/usr/bin} or \texttt{/usr/local/sbin}).
+For example:
+\begin{raw}
+$ echo $PATH
+/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl
+$ sudo mv ~/Downloads/terraform /usr/local/bin/
+\end{raw}
+
+\subsection{Installing the Taikun provider}
+Until the provider is listed on Terraform's \href{https://registry.terraform.io/browse/providers}{plugin registry}, the provider must be installed locally.
 Start by cloning the GitHub repo.
 \begin{shell}
 git clone git@github.com:itera-io/terraform-provider-taikun.git
@@ -15,7 +56,7 @@ make dockerinstall
 The provider will be installed at:\\
 \texttt{~/.terraform.d/plugins/itera-io/dev/taikun/0.1.0/linux\_amd64/terraform-provider-taikun}.
 
-\section{Setup}
+\subsection{Downloading the workshop files}
 Terraform config files with the minimal required configuration are provided for each task.
 Download the \texttt{workshop.zip} file from [insert method of distribution] % slack channel? git repo?
 and extract its contents in the directory of your choice.\\
@@ -39,22 +80,3 @@ Its contents should be as follows.
 |-- setup.sh*
 \end{raw}
 Each task has a dedicated directory, when moving on to a new task, please switch into the corresponding directory.
-
-\section{Authentication}
-In order to complete the tasks that follow, you will need to provide Taikun credentials to Terraform.
-As some of the tasks require Partner privileges, please use a Partner or Admin account.\\
-
-We will not explain how to provide sensitive input variables to Terraform as those concerns are outside the scope of this
-workshop. % or should we let people do this setup themselves?
-To find out more about this topic, see this \href{https://learn.hashicorp.com/tutorials/terraform/sensitive-variables}{Hashicorp tutorial}.
-A script is thus provided to manage Taikun authentication.
-Run it and provide your credentials as follows. The script only needs to be run once.
-\begin{shell}
-./setup.sh
-\end{shell}
-\begin{raw}
-Enter your Taikun email:
-> jane.doe@itera.io
-Enter your Taikun password:
-> password123
-\end{raw}
