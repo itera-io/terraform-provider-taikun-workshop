@@ -29,7 +29,7 @@ $(OUT_WIN).pdf: $(SRC_WIN)
 clean:
 	$(RM) *.dvi *.aux *.log *.nav *.toc *.snm *.out *.pyg _minted* *.fls *.fdb_latexmk *.bcf
 
-distclean: $(clean)
+distclean: clean
 	$(RM) $(OUT_UNIX).pdf $(OUT_WIN).pdf
 
 .PHONY: clean distclean all unix win docker
