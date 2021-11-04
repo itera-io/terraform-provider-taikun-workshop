@@ -3,18 +3,26 @@ FLAGS = -pdf -shell-escape
 
 RM = rm -rf
 
-SRC = main.tex content.tex mydocstyle.sty $(wildcard assets/*)
-OUT = terraform-provider-taikun-workshop
+SRC = mydocstyle.sty $(wildcard assets/*)
 
-all: $(OUT).pdf
+SRC_UNIX = main_unix.tex content_unix.tex $(SRC)
+OUT_UNIX = terraform-taikun-workshop-unix
 
-$(OUT).pdf: $(SRC)
-	$(COMPILE) $(FLAGS) -jobname=$(OUT) $<
+SRC_WIN = main_win.tex content_win.tex $(SRC)
+OUT_WIN = terraform-taikun-workshop-win
+
+all: $(OUT_UNIX).pdf $(OUT_WIN).pdf
+
+$(OUT_UNIX).pdf: $(SRC_UNIX)
+	$(COMPILE) $(FLAGS) -jobname=$(OUT_UNIX) $<
+
+$(OUT_WIN).pdf: $(SRC_WIN)
+	$(COMPILE) $(FLAGS) -jobname=$(OUT_WIN) $<
 
 clean:
 	$(RM) *.aux *.log *.nav *.toc *.snm *.out *.pyg _minted* *.fls *.fdb_latexmk *.bcf
 
 distclean: $(clean)
-	$(RM) $(OUT).pdf
+	$(RM) $(OUT_UNIX).pdf $(OUT_WIN).pdf
 
-.PHONY: clean
+.PHONY: clean distclean all
