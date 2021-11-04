@@ -10,6 +10,8 @@ as well as the manual corresponding to their OS.
 
 # Build
 
+The LaTex sources are located in the `src/` directory.
+
 ## Using Docker
 Run `make docker` to build both manuals.
 
