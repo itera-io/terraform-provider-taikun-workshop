@@ -1,47 +1,9 @@
-\begin{important}{Important}
-  This document is for Windows users, if you are a Linux or MacOS user, please read \texttt{terraform-taikun-workshop-unix.pdf} instead.
-\end{important}
-
-\section{Introduction}
-% TODO introduction to Terraform
-
-The Terraform Provider for Taikun is hosted on \href{https://github.com/itera-io/terraform-provider-taikun}{GitHub}.
-\blindtext{}
-
-\section{How to read this document}
-
-Text in the following style of boxes are commands to type on the command line.
-\begin{shell}
-cd workshop/
-ls
-echo Hello!
-\end{shell}
-While text in the following style of boxes correspond to the expected output of commands.
-\begin{raw}
-task_00/
-task_01/
-...
-Hello!
-\end{raw}
-
 \section{Requirements}
 You must have Terraform version 0.14 or newer installed (see \href{https://www.terraform.io/downloads.html}{Download Terraform}).
 
 \section{Installing the provider locally}
-Until the provider is listed on Terraform's plugin \href{https://registry.terraform.io/browse/providers}{registry}, the provider must be installed locally.
-Start by cloning the GitHub repo.
-\begin{shell}
-git clone git@github.com:itera-io/terraform-provider-taikun.git
-\end{shell}
-Then run the following commands to install the provider on your machine.
-\begin{shell}
-cd terraform-provider-taikun
-make dockerinstall
-\end{shell}
-The provider will be installed at the following location.
-\begin{raw}
-~/.terraform.d/plugins/itera-io/dev/taikun/0.1.0/linux_amd64/terraform-provider-taikun
-\end{raw}
+% TODO
+\blindtext{}
 
 \section{Setup}
 Terraform config files with the minimal required configuration are provided for each task.
@@ -78,7 +40,7 @@ To find out more about this topic, see this \href{https://learn.hashicorp.com/tu
 A script is thus provided to manage Taikun authentication.
 Run it and provide your credentials as follows. The script only needs to be run once.
 \begin{shell}
-./setup.sh
+./setup.sh % TODO Windows equivalent
 \end{shell}
 \begin{raw}
 Enter your Taikun email:
@@ -86,12 +48,3 @@ Enter your Taikun email:
 Enter your Taikun password:
 > password123
 \end{raw}
-
-\section{Tasks}
-\subsection{Task 0}
-
-\begin{tip}{Note}
-  For this task, please switch into the directory \texttt{workshop/task\_00}.
-\end{tip}
-
-\blindtext{}

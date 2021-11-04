@@ -3,12 +3,12 @@ FLAGS = -pdf -shell-escape
 
 RM = rm -rf
 
-SRC = mydocstyle.sty $(wildcard assets/*)
+SRC = intro.tex tasks.tex mydocstyle.sty $(wildcard assets/*)
 
-SRC_UNIX = main_unix.tex content_unix.tex $(SRC)
+SRC_UNIX = main_unix.tex setup_unix.tex $(SRC)
 OUT_UNIX = terraform-taikun-workshop-unix
 
-SRC_WIN = main_win.tex content_win.tex $(SRC)
+SRC_WIN = main_win.tex setup_win.tex $(SRC)
 OUT_WIN = terraform-taikun-workshop-win
 
 all: unix win

@@ -1,29 +1,3 @@
-\begin{important}{Important}
-  This document is for Linux and MacOS users, if you are a Windows user, please read \texttt{terraform-taikun-workshop-win.pdf} instead.
-\end{important}
-
-\section{Introduction}
-% TODO introduction to Terraform
-
-The Terraform Provider for Taikun is hosted on \href{https://github.com/itera-io/terraform-provider-taikun}{GitHub}.
-\blindtext{}
-
-\section{How to read this document}
-
-Text in the following style of boxes are commands to type on the command line.
-\begin{shell}
-cd workshop/
-ls
-echo Hello!
-\end{shell}
-While text in the following style of boxes correspond to the expected output of commands.
-\begin{raw}
-task_00/
-task_01/
-...
-Hello!
-\end{raw}
-
 \section{Requirements}
 You must have Terraform version 0.14 or newer installed (see \href{https://www.terraform.io/downloads.html}{Download Terraform}).
 
@@ -38,10 +12,8 @@ Then run the following commands to install the provider on your machine.
 cd terraform-provider-taikun
 make dockerinstall
 \end{shell}
-The provider will be installed at the following location.
-\begin{raw}
-~/.terraform.d/plugins/itera-io/dev/taikun/0.1.0/linux_amd64/terraform-provider-taikun
-\end{raw}
+The provider will be installed at:\\
+\texttt{~/.terraform.d/plugins/itera-io/dev/taikun/0.1.0/linux\_amd64/terraform-provider-taikun}.
 
 \section{Setup}
 Terraform config files with the minimal required configuration are provided for each task.
@@ -86,12 +58,3 @@ Enter your Taikun email:
 Enter your Taikun password:
 > password123
 \end{raw}
-
-\section{Tasks}
-\subsection{Task 0}
-
-\begin{tip}{Note}
-  For this task, please switch into the directory \texttt{workshop/task\_00}.
-\end{tip}
-
-\blindtext{}
