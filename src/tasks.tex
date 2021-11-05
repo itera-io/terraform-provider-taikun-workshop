@@ -3,8 +3,12 @@ Once the provider has been added to the Terraform Registry, the documentation wi
 For the purpose of this workshop, the documentation is being temporarily hosted on \href{https://intuinewin.github.io/taikun-docs/}{Github Pages}.
 
 \section{Tasks}
+The ultimate goal of this workshop is to have an operational Taikun project built solely with Terraform
+configuration files.
+By following a step by step process to create a Taikun infrastructure,
+you will discover how various Taikun resources are declared and managed using Terraform.\\
 
-The \texttt{workshop/} directory has the following content.
+All your work will be done in the \texttt{workshop/} directory.
 \begin{raw}
 ./workshop/
 |-- main.tf
@@ -14,6 +18,7 @@ The \texttt{workshop/} directory has the following content.
 \texttt{main.tf} contains the Provider configuration, namely where it is installed
 and what credentials to use. You will not need to edit this file.
 \begin{tf}
+# main.tf
 terraform {
   required_providers {
     taikun = {
@@ -64,6 +69,7 @@ For now, simply edit \texttt{taikun\_auth.auto.tfvars}
 and replace the values of \texttt{taikun\_email} and \texttt{taikun\_password}
 with the credentials provided on the \textbf{\#terraform-workshop} Slack channel.
 \begin{tf}
+# taikun_auth.auto.tfvars
 taikun_email = "jane.doe@itera.io"
 taikun_password = "PassWord123"
 \end{tf}
