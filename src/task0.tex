@@ -112,7 +112,11 @@ resource "taikun_organization" "myorg" {
     servers                          = 0
 }
 \end{raw}
+You may wish to check the organization was indeed created at \url{https://app.taikun.dev/organizations}.
 \begin{tip}
 Try running \texttt{terraform apply} again, Terraform will refresh its state, and, as long as
-nothing has changed, tell you that no changes are needed.
+nothing has changed, tell you that no changes are needed.\\
+
+You can also try deleting the organization through the web UI and then run \texttt{terraform apply}.
+Terraform will tell you that changes have occured outside of Terraform and will recreate the resource.
 \end{tip}

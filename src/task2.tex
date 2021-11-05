@@ -1,0 +1,20 @@
+\subsection{Task 2}\label{sec:task2}
+
+\begin{note}
+For this task, please write your code in the file \texttt{task2.tf}
+at the root of the \texttt{workshop/} directory.
+\end{note}
+
+We now want to create a Slack configuration, which will be used later
+in an alerting profile. \href{https://intuinewin.github.io/taikun-docs/resources/slack_configuration.html}{Here} is its documentation.\\
+
+The hook URL should be \texttt{https://hooks.myapp.example/ci}.
+We wish to send \textbf{alert-type notifications only} to the channel \texttt{ci}.
+
+% TODO alerting profile
+
+\begin{warn}
+  Remember to follow the \texttt{tfws-<firstname>-<s>} naming convention when naming your resources.
+\end{warn}
+
+Once you have declared your two new resources, apply your changes and move on to the next task.
