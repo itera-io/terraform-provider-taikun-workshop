@@ -1,12 +1,12 @@
 \section{Setup using Docker}\label{sec:docker}
 
-You can choose to build and use a Docker image to do this workshop.
+You can choose to build and use a Docker image to complete this workshop.
 
 \subsection{Requirements}
 
 You must have Docker and Git installed.\\
 You need to clone the workshop repository which contains all the files you'll need.\\
-In order to clone this repository, you'll need a github account and to join the Itera organization on Github.
+In order to clone this repository, you'll need a Github account and to join the \href{https://github.com/itera-io}{Itera organization} on Github.
 
 \begin{shell}
 git clone --recursive git@github.com:itera-io/terraform-provider-taikun-workshop.git
@@ -22,10 +22,11 @@ docker build -t tf-workshop .
 
 \subsection{Docker container creation}
 
+The following commands runs the Docker image.
 \begin{shell}
 docker run -it tf-workshop
 \end{shell}
-You are now in the container logged in as root and all the workshops files are available.\\
-Terraform and the Taikun Terraform provider are also already installed.
+You are now logged in to the container as root. The workshop files,
+Terraform and the Taikun Terraform provider are already installed.
 As you will need to edit text files, the Docker image has the \texttt{vim}, \texttt{emacs} and \texttt{nano}
 packages installed.

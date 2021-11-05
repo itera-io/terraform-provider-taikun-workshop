@@ -42,7 +42,7 @@
 \usepackage{framed}
 \usepackage{sectionbox}
 \usepackage{minted}
-\usemintedstyle{solarized-light}
+\usemintedstyle{perldoc}
 \usepackage{tabularx}
 \usepackage{tcolorbox}
 \usepackage{listings}
@@ -106,17 +106,24 @@
 
 \definecolor{notecolor}{HTML}{0074D9}
 \definecolor{warncolor}{HTML}{FF851B}
+\definecolor{infocolor}{HTML}{79C416}
 
-\newenvironment{note}[1]{%
+\newenvironment{note}{%
 	\begin{tcolorbox}[colback=notecolor!5!white,colframe=notecolor!75!black,arc=0mm,before
-skip=10pt plus 2pt,after skip=20pt plus 2pt,title=#1]
+skip=10pt plus 2pt,after skip=20pt plus 2pt,title=Note]
 }{%
 	\end{tcolorbox}
 }
 
-\newenvironment{warn}[1]{%
+\newenvironment{warn}{%
 	\begin{tcolorbox}[colback=warncolor!5!white,colframe=warncolor!75!black,arc=0mm,before
-skip=10pt plus 2pt,after skip=20pt plus 2pt,title=#1]
+skip=10pt plus 2pt,after skip=20pt plus 2pt,title=Important]
+}{%
+	\end{tcolorbox}
+}
+\newenvironment{info}{%
+	\begin{tcolorbox}[colback=infocolor!5!white,colframe=infocolor!75!black,arc=0mm,before
+skip=10pt plus 2pt,after skip=20pt plus 2pt,title=Tip]
 }{%
 	\end{tcolorbox}
 }
@@ -143,12 +150,11 @@ skip=10pt plus 2pt,after skip=20pt plus 2pt,title=#1]
 \begin{center}
 \framesectionbox{}
 \begin{sectionbox}{}
-\begin{minipage}{0.9\textwidth}
-\begin{Verbatim}
-}%
-{
-\end{Verbatim}
-\end{minipage}
+\begin{minipage}{\linewidth}%
+\begin{minted}{shell}}
+{%
+\end{minted}%
+\end{minipage}%
 \end{sectionbox}
 \end{center}
 }
