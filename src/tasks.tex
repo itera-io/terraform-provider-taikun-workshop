@@ -6,13 +6,11 @@ For the purpose of this workshop, the documentation is being temporarily hosted 
 
 The \texttt{workshop/} directory has the following content.
 \begin{raw}
-|-- task_00/
-    |-- main.tf
-    |-- taikun_credentials.tfvars
-    |-- variables.tf
-|-- setup.sh*
+./workshop/
+|-- main.tf
+|-- taikun_auth.auto.tfvars
+|-- variables.tf
 \end{raw}
-Each task has a dedicated directory, when moving on to a new task, please switch into the corresponding directory.
 
 \begin{warn}{Important}
   Throughout this workshop, in order to avoid conflicts and
@@ -42,26 +40,5 @@ taikun_password = "PassWord123"
 To find out more about providing sensitive data to Terraform, see this \href{https://learn.hashicorp.com/tutorials/terraform/sensitive-variables}{Hashicorp tutorial}.
 
 \subsection{Task 0}
-\begin{note}{Note}
-For this task, please switch into the \texttt{task\_00} directory.
-\end{note}
 
-\blindtext{}
-
-% example
-\begin{tf}
-terraform {
-  required_providers {
-    taikun = {
-      source = "itera-io/dev/taikun"
-    }
-  }
-}
-
-resource "taikun_cloud_credential_aws" "foo" {
-  name = "foo"
-  availability_zone = "a"
-}
-\end{tf}
-
-\blindtext{}
+% TODO task 0 guidelines
