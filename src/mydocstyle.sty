@@ -42,6 +42,7 @@
 \usepackage{framed}
 \usepackage{sectionbox}
 \usepackage{minted}
+\usemintedstyle{solarized-light}
 \usepackage{tabularx}
 \usepackage{tcolorbox}
 \usepackage{listings}
@@ -120,14 +121,15 @@ skip=10pt plus 2pt,after skip=20pt plus 2pt,title=#1]
 	\end{tcolorbox}
 }
 
-\newenvironment{code}{%
+\newenvironment{tf}{%
 \definecolor{sectboxrulecol}{rgb}{0.8,0.8,0.8}
+\definecolor{sectboxfillcol}{rgb}{0.99,0.96,0.89} %rgb(253, 246, 227)
 \VerbatimEnvironment{}
 \begin{center}%
 \framesectionbox{}
 \begin{sectionbox}{}
 \begin{minipage}{\linewidth}%
-\begin{minted}[tabsize=4,xleftmargin=20pt,linenos]{csharp}}
+\begin{minted}{terraform}}
 {%
 \end{minted}%
 \end{minipage}%
@@ -165,14 +167,6 @@ skip=10pt plus 2pt,after skip=20pt plus 2pt,title=#1]
 \end{minipage}%
 \end{sectionbox}
 \end{center}}
-
-\lstset{
-  language=[Sharp]C,
-  basicstyle=\ttfamily\small,
-  frame=single,
-  keywordstyle=\bfseries,
-  showstringspaces=false,
-}
 
 \lstdefinestyle{tree}{
   literate=

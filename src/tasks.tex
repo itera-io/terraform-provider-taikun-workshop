@@ -51,4 +51,23 @@ Enter your Taikun password:
 \begin{note}{Note}
 For this task, please switch into the \texttt{task\_00} directory.
 \end{note}
+
+\blindtext{}
+
+% example
+\begin{tf}
+terraform {
+  required_providers {
+    taikun = {
+      source = "itera-io/dev/taikun"
+    }
+  }
+}
+
+resource "taikun_cloud_credential_aws" "foo" {
+  name = "foo"
+  availability_zone = "a"
+}
+\end{tf}
+
 \blindtext{}
