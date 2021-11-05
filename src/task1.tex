@@ -10,7 +10,10 @@ we will create a Kubernetes profile which belongs to it.
 Check the \texttt{kubernetes\_profile} resource's schema on
 \href{https://intuinewin.github.io/taikun-docs/resources/kubernetes_profile.html}{the provider's documentation}
 and declare the resource in \texttt{task1.tf}, setting \texttt{organization\_id} to the ID
-of the organization created in the previous task (see \fullref{sec:task0}).
+of the organization created in the previous task (see \fullref{sec:task0}).\\
+
+Feel free to set some of \texttt{kubernetes\_profile}'s other optional attributes,
+such as \texttt{schedule\_on\_master} and \texttt{load\_balancing\_solution}.
 
 \begin{warn}
   Remember to follow the \texttt{tfws-<firstname>-<s>} naming convention when naming your Kubernetes profile.
