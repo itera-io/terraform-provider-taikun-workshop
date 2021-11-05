@@ -1,4 +1,34 @@
-\section{Authentication}
+\section{Documentation}
+Once the provider has been added to the Terraform Registry, the documentation will be available online there.
+For the purpose of this workshop, the documentation is being temporarily hosted on \href{https://intuinewin.github.io/taikun-docs/}{Github Pages}.
+
+\section{Tasks}
+
+The \texttt{workshop/} directory has the following content.
+\begin{raw}
+|-- task_00/
+    |-- main.tf
+    |-- taikun_credentials.tfvars
+    |-- variables.tf
+|-- setup.sh*
+\end{raw}
+Each task has a dedicated directory, when moving on to a new task, please switch into the corresponding directory.
+
+\begin{warn}{Important}
+  Throughout this workshop, in order to avoid conflicts and
+  to permit easy clean up of leftover infrastructure, please follow the naming conventions used below.\\
+
+  All resources names will follow the format \texttt{tfws-<n>-<firstname>-<s>}, where:
+  \begin{itemize}
+    \item \texttt{<n>} is the task number
+    \item \texttt{<firstname>} is your firstname
+    \item \texttt{<s>} is an arbitrary string of your choosing
+  \end{itemize}
+  For example, while completing task 9, Jane Doe might name their Taikun project
+  \texttt{tfws-9-jane-mysuperproject}.
+\end{warn}
+
+\subsection{Authentication}
 In order to complete the tasks that follow, you will need to provide Taikun credentials to Terraform.
 As some of the tasks require Partner privileges, please use a Partner or Admin account.\\
 
@@ -16,25 +46,6 @@ Enter your Taikun email:
 Enter your Taikun password:
 > password123
 \end{raw}
-
-\section{Documentation}
-Once the provider has been added to the Terraform Registry, the documentation will be available online there.
-For the purpose of this workshop, the documentation is being temporarily hosted on \href{https://intuinewin.github.io/taikun-docs/}{Github Pages}.
-
-\section{Tasks}
-\begin{warn}{Important}
-  Throughout this workshop, in order to avoid conflicts and
-  to permit easy clean up of leftover infrastructure, please follow the naming conventions used below.\\
-
-  All resources names will follow the format \texttt{tfws-<n>-<firstname>-<s>}, where:
-  \begin{itemize}
-    \item \texttt{<n>} is the task number
-    \item \texttt{<firstname>} is your firstname
-    \item \texttt{<s>} is an arbitrary string of your choosing
-  \end{itemize}
-  For example, while completing task 9, Jane Doe might name their Taikun project
-  \texttt{tfws-9-jane-mysuperproject}.
-\end{warn}
 
 \subsection{Task 0}
 \begin{note}{Note}
