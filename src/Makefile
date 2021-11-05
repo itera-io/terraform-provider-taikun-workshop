@@ -3,7 +3,7 @@ FLAGS = -pdf -shell-escape
 
 RM = rm -rf
 
-SRC = intro.tex setup_docker.tex tasks.tex mydocstyle.sty $(wildcard assets/*)
+SRC = intro.tex setup_docker.tex $(wildcard task*.tex) mydocstyle.sty $(wildcard assets/*)
 
 SRC_UNIX = main_unix.tex setup_unix.tex $(SRC)
 OUT_UNIX = terraform-taikun-workshop-unix
