@@ -5,13 +5,16 @@ You can choose to build and use a Docker image to do this workshop.
 \subsection{Requirements}
 
 You must have Docker and Git installed.\\
-You need to clone the workshop repository which contains all the files you'll need.
+You need to clone the workshop repository which contains all the files you'll need.\\
+In order to clone this repository, you'll need a github account and to join the Itera organization on Github.
 
 \begin{shell}
 git clone --recursive git@github.com:itera-io/terraform-provider-taikun-workshop.git
 \end{shell}
 
 \subsection{Docker image creation}
+
+First, you'll need to build the image, this operation can take several minutes.
 
 \begin{shell}
 docker build -t tf-workshop .
