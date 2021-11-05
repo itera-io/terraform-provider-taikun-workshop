@@ -80,7 +80,6 @@ This objective of this first task is to create an Organization.
 All resources created in the future will be part of this organization.
 As this is the first task, you will be guided through every step of the process.\\
 
-\subsubsection{Organization resource}
 Before you do anything, start by preparing your working directory for other commands.
 \begin{shell}
 terraform init
@@ -132,7 +131,16 @@ Here we did not bother to define any of the optional arguments, only the require
 
 Labels and argument names can contain letters, digits, underscores and hyphens and may not start with a digit.
 \end{info}
+Run the following command to reformat your configuration in the standard style.
+\begin{shell}
+terraform fmt
+\end{shell}
 Now apply your changes.
+\begin{info}
+If you have already created resources, \texttt{apply} will refresh Terraform's state
+by making request to Taikun's API. If you wish to check your changes are valid
+without refreshing the state, you can run \texttt{terraform validate}.
+\end{info}
 \begin{shell}
 terraform apply
 \end{shell}
@@ -176,14 +184,9 @@ resource "taikun_organization" "myorg" {
 }
 \end{raw}
 \begin{info}
-Try running \texttt{apply} again, Terraform will refresh its state, and, as long as
+Try running \texttt{terraform apply} again, Terraform will refresh its state, and, as long as
 nothing has changed, tell you that no changes are needed.
 \end{info}
-
-\subsubsection{Organization datasource}
-This section is not required to complete the workshop and serves only
-to introduce Terraform's datasources. If you are already familiar with
-them, you can skip to \fullref{sec:task1}.
 
 \subsection{Task 1}\label{sec:task1}
 \blindtext{}
