@@ -10,5 +10,3 @@ provider "taikun" {
   email    = var.taikun_email
   password = var.taikun_password
 }
-
-# FIXME

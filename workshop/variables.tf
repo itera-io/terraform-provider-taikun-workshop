@@ -1,3 +1,4 @@
+# Variables for Taikun authentication
 variable "taikun_email" {
   description = "Taikun email"
   type = string
@@ -9,3 +10,5 @@ variable "taikun_password" {
   type = string
   sensitive = true
 }
+
+# FIXME
