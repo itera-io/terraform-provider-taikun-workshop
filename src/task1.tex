@@ -1,2 +1,28 @@
 \subsection{Task 1}\label{sec:task1}
-\blindtext{}
+
+\begin{note}
+For this task, please write your code in the file \texttt{task1.tf}
+at the root of the \texttt{workshop/} directory.
+\end{note}
+
+Now that we have created our organization,
+we will create a Kubernetes profile which belongs to it.
+Check the \texttt{kubernetes\_profile} resource's schema on
+\href{https://intuinewin.github.io/taikun-docs/resources/kubernetes_profile.html}{the provider's documentation}
+and declare the resource in \texttt{task1.tf}, setting \texttt{organization\_id} to the ID
+of the organization created in the previous task (\fullref{sec:task0}).
+
+\begin{warn}
+  Remember to follow the \texttt{tfws-<firstname>-<s>} naming convention when naming your Kubernetes profile.
+\end{warn}
+
+Once you have declared your resource, apply your changes and move on to the next task.
+
+\begin{tip}
+To refer to the ID of your organization, use the following syntax.
+\begin{tf}
+resource.taikun_organization.myorg.id
+\end{tf}
+Make sure to replace \texttt{myorg} if you used another label for your organization.
+\end{tip}
+
