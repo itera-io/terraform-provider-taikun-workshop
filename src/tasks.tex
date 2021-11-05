@@ -30,22 +30,18 @@ Each task has a dedicated directory, when moving on to a new task, please switch
 
 \subsection{Authentication}
 In order to complete the tasks that follow, you will need to provide Taikun credentials to Terraform.
-As some of the tasks require Partner privileges, please use a Partner or Admin account.\\
+You will be using a Partner account, as some of the tasks, such as creating an organization,
+require Partner privileges.\\
 
-We will not explain how to provide sensitive input variables to Terraform as those concerns are outside the scope of this
-workshop. % or should we let people do this setup themselves?
-To find out more about this topic, see this \href{https://learn.hashicorp.com/tutorials/terraform/sensitive-variables}{Hashicorp tutorial}.
-A script is thus provided to manage Taikun authentication.
-Run it and provide your credentials as follows. The script only needs to be run once.
-\begin{shell}
-./setup.sh
-\end{shell}
-\begin{raw}
-Enter your Taikun email:
-> jane.doe@itera.io
-Enter your Taikun password:
-> password123
-\end{raw}
+We will explain how input variables work later in the workshop.
+For now, simply edit \texttt{taikun\_auth.auto.tfvars}
+and replace the values of \texttt{taikun\_email} and \texttt{taikun\_password}
+with the credentials provided on the \textbf{\#terraform-workshop} Slack channel.
+\begin{tf}
+taikun_email = "jane.doe@itera.io"
+taikun_password = "PassWord123"
+\end{tf}
+To find out more about providing sensitive data to Terraform, see this \href{https://learn.hashicorp.com/tutorials/terraform/sensitive-variables}{Hashicorp tutorial}.
 
 \subsection{Task 0}
 \begin{note}{Note}
