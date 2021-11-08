@@ -7,7 +7,7 @@ variable "task4_users" {
   default     = {}
 }
 
-resource "taikun_user" "user" {
+resource "taikun_user" "tfws_user" {
   for_each = var.task4_users
 
   user_name = each.key
