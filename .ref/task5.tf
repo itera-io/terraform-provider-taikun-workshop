@@ -11,7 +11,7 @@ variable "task5_users" {
   default     = {}
 }
 
-resource "taikun_access_profile" "tfws_ap" {
+resource "taikun_access_profile" "tfws_access_profile" {
   name = "tfws_access_profile"
 
   ntp_server {
