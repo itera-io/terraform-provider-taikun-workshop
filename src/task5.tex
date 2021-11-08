@@ -6,3 +6,34 @@ at the root of the \texttt{workshop/} directory.\\
 You will also be editing \texttt{task5.auto.tfvars}.
 \end{note}
 
+Before we can create our first project, we need an access profile.
+\href{https://intuinewin.github.io/taikun-docs/resources/access_profile.html}{Here is its documentation}.
+This access profile will have multiple SSH users. Once again, we would like
+to define those in a variable in order to avoid writing multiple \texttt{ssh\_user} blocks, as in the following example.
+\begin{tf}
+resource "taikun_access_profile" "foo" {
+  # ...
+
+  # This is what we want to avoid:
+  ssh_user {
+      name       = "alice"
+      public_key = "ssh-ed25519 AAAATHEQUICKBROWNFOXJUMPSOVERTHELAZYDOG alice"
+  }
+  ssh_user {
+      name       = "alice-home"
+      public_key = "ssh-ed25519 AAAATHEQUICKBROWNFOXJUMPSOVERTHELAZYDOG alice-home"
+  }
+  ssh_user {
+      name       = "bob"
+      public_key = "ssh-ed25519 AAAATHEQUICKBROWNFOXJUMPSOVERTHELAZYDOG bob"
+  }
+  ssh_user {
+      name       = "bob-home-laptop"
+      public_key = "ssh-ed25519 AAAATHEQUICKBROWNFOXJUMPSOVERTHELAZYDOG bob-home-laptop"
+  }
+}
+\end{tf}
+
+You will use \texttt{for\_each} in a slightly different manner as \texttt{ssh\_user} is a nested resource
+within the \texttt{access\_profile} resource.
+
