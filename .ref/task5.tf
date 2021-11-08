@@ -14,6 +14,10 @@ variable "task5_users" {
 resource "taikun_access_profile" "tfws_access_profile" {
   name = "tfws_access_profile"
 
+  dns_server {
+    address = "8.8.8.8"
+  }
+
   ntp_server {
     address = "time.windows.com"
   }
