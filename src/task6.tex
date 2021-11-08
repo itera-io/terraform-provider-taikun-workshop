@@ -1,0 +1,63 @@
+\subsection{Task 6}\label{sec:task6}
+
+\begin{note}
+For this task, please write all your code in the file \texttt{task6.tf}
+at the root of the \texttt{workshop/} directory.
+\end{note}
+
+Finally, we can now declare our project resource.
+However, as we will need to bind flavors to the project, we must first fetch
+a list of suitable flavors.\\
+
+To do this, we shall declare a \href{https://intuinewin.github.io/taikun-docs/data-sources/flavors.html}{flavors datasource}.
+Datasources, as opposed to resources, only fetch information from providers and do not create any resources.
+Add the following block to \texttt{task6.tf}.
+\begin{tf}
+data "taikun_flavors" "small" {
+  # FIXME
+}
+\end{tf}
+As we are declaring a datasource and not a resource, we start with the keyword \texttt{data} instead of \texttt{resource}. Once again, the type of datasource is in lowercase and must be prefixed by the name of the provider.
+Finally we choose the label \texttt{"small"} to designate this datasource.\\
+
+Edit the datasource to search for flavors with 4 or fewer CPUs and no more than 8GB of RAM.
+Set its cloud credential ID to that of the cloud credential created in \fullref{sec:task3}.\\
+
+Then declare a local value \texttt{flavors} to be the list of names of the flavors read
+by the datasource.
+See the \href{https://www.terraform.io/docs/language/values/locals.html}{Terraform documentation}
+to know more about local values.
+\begin{tf}
+locals {
+  flavors = [for flavor in data.taikun_flavors.small.flavors : flavor.name]
+}
+\end{tf}
+This will allow you to refer to the list of flavor names with \texttt{local.flavors},
+which will be useful when defining the project.\\
+
+We now have everything we need to create a project in Taikun.
+\href{https://intuinewin.github.io/taikun-docs/resources/project.html}{Here} is its documentation.\\
+
+These are the requirements for the project resource:
+\begin{itemize}
+  \item As all previous resources, it must belong to the organization created in \fullref{sec:task0}.
+  \item It must use the kubernetes profile defined in \fullref{sec:task1}.
+  \item Its alerting profile must be the one defined \fullref{sec:task2}.
+  \item It should use the cloud credentials defined in \fullref{sec:task3}.
+  \item Monitoring must be enabled.
+  \item It should have one bastion, one kubemaster and one kubeworker.
+\end{itemize}
+
+\begin{tip}
+  To access the first element of a list, use the syntax \texttt{list[index]}.
+  For example, to get the first flavor read by the \texttt{flavors} datasource,
+  use \texttt{local.flavors[0]}.
+\end{tip}
+
+Once you have declared the project resource, go ahead and apply your changes.
+\begin{hint}
+  The Taikun provider was built with the knowledge that you are probably getting hungry at this point.
+  Thus, you can expect to wait about 30 minutes for your project to be in \texttt{Ready} state.
+  Please take this time to enjoy the refreshments available in the office, or whatever is
+  in your fridge if you are working from home.
+\end{hint}
