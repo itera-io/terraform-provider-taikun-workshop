@@ -1,0 +1,115 @@
+\subsection{Task 3}\label{sec:task3}
+
+\begin{note}
+For this task, please write your code in the file \texttt{task3.tf}
+at the root of the \texttt{workshop/} directory.\\
+You will also be editing \texttt{variables.tf} and \texttt{openstack.auto.tfvars}.
+\end{note}
+
+In order to create a Taikun project, we will need cloud credentials.
+You will be using the OpenStack credentials provided on the \textbf{\#terraform-workshop}
+Slack channel. In a real work environment, we wouldn't want to store our cloud credentials in version control,
+this is where input variables come into play.\\
+
+Start by editing \texttt{variables.tf}, variables are declared in this file by convention.
+As you can see, this file already contains the variables \texttt{taikun\_email} and
+\texttt{taikun\_password} used for authentication.
+
+\begin{tf}
+# variables.tf
+variable "taikun_email" {
+  description = "Taikun email"
+  type        = string
+  sensitive   = true
+}
+
+variable "taikun_password" {
+  description = "Taikun password"
+  type        = string
+  sensitive   = true
+}
+\end{tf}
+
+\begin{tip}
+  Input variables are declared with a \texttt{variable} block.
+  The label that follows the \texttt{variable} keyword is the name of the variable.
+
+  \begin{itemize}
+    \item The \texttt{description} argument is used to specifiy the variable's documentation.
+    \item \texttt{type} is the type of this argument's value.
+    \item If set to \texttt{true}, \texttt{sensitive} will hide this variable's value in Terraform output. It defaults to false.
+  \end{itemize}
+
+  To know more about input variables and a full list of arguments,
+  see the \href{https://www.terraform.io/docs/language/values/variables.html}{Terraform documentation on variables}.\\
+
+  Variables are then defined in \texttt{.tfvars} files, as you saw in \fullref{sec:auth}.\\
+\end{tip}
+
+Add the following variable declarations to the \texttt{variables.tf} file.
+\begin{tf}
+variable "openstack_url" {
+  description = "OpenStack url"
+  type        = string
+  sensitive   = true
+}
+variable "openstack_user" {
+  description = "OpenStack user"
+  type        = string
+  sensitive   = true
+}
+variable "openstack_password" {
+  description = "OpenStack password"
+  type        = string
+  sensitive   = true
+}
+variable "openstack_domain" {
+  description = "OpenStack domain"
+  type        = string
+  sensitive   = true
+}
+variable "openstack_region" {
+  description = "OpenStack region"
+  type        = string
+}
+variable "openstack_public_network" {
+  description = "OpenStack public network"
+  type        = string
+}
+variable "openstack_project" {
+  description = "OpenStack project name"
+  type        = string
+}
+\end{tf}
+\begin{note}
+  If copy-pasting this code block into \texttt{variables.tf} does not indent the code properly,
+  simply save \texttt{variables.tf} and run \texttt{terraform fmt}.
+\end{note}
+
+Now that the OpenStack variables have been declared,
+define the variables using the credentials provided on \textbf{\#terraform-workshop}, in \texttt{openstack.auto.tfvars}.
+
+\begin{tip}
+As a reminder, here is the syntax used in \texttt{taikun\_auth.auto.tfvars} to define the variables \texttt{taikun\_email}
+and \texttt{taikun\_password}.
+\begin{tf}
+# taikun_auth.auto.tfvars
+taikun_email = "jane.doe@itera.io"
+taikun_password = "PassWord123"
+\end{tf}
+\end{tip}
+
+\begin{tip}
+  Terraform must be told through command line arguments which \texttt{.tfvars} files to read.
+  However, if variable definition files have the extension \texttt{.auto.tfvars}, as is the case with
+  \texttt{taikun\_auth.auto.tfvars}, Terraform will automatically fetch the variables' values.
+\end{tip}
+
+Now that your OpenStack variables have been declared and defined, you can define the OpenStack cloud credential resource.
+\href{https://intuinewin.github.io/taikun-docs/resources/cloud_credential_openstack.html}{Here} is its documentation.
+
+\begin{tip}
+In order to get a variable's value, use the syntax \texttt{var.variable\_name}.
+For example, to set the OpenStack domain in your \texttt{cloud\_credential\_openstack} resource,
+  you will write the following. \mint{terraform}|domain = var.openstack_domain|
+\end{tip}

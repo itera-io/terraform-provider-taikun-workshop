@@ -12,6 +12,7 @@ All your work will be done in the \texttt{workshop/} directory.
 \begin{raw}
 ./workshop/
 |-- main.tf
+|-- openstack.auto.tfvars
 |-- taikun_auth.auto.tfvars
 |-- variables.tf
 \end{raw}
@@ -40,10 +41,12 @@ such that, at the end of the workshop, your directory is organized as such:
 \begin{raw}
 ./workshop/
 |-- main.tf
+|-- openstack.auto.tfvars
 |-- taikun_auth.auto.tfvars
 |-- task0.tf
 |-- task1.tf
 |-- task2.tf
+|-- task3.tf
 |-- variables.tf
 \end{raw}
 % TODO update as tasks are added
@@ -60,7 +63,7 @@ such that, at the end of the workshop, your directory is organized as such:
   For example, Jane Doe might name their Taikun project \texttt{tfws-jane-mysuperproject}.
 \end{warn}
 
-\subsection{Authentication}
+\subsection{Authentication}\label{sec:auth}
 In order to complete the tasks that follow, you will need to provide Taikun credentials to Terraform.
 You will be using a Partner account, as some of the tasks, such as creating an organization,
 require Partner privileges.\\
@@ -79,3 +82,4 @@ To find out more about providing sensitive data to Terraform, see this \href{htt
 \input{task0}
 \input{task1}
 \input{task2}
+\input{task3}
