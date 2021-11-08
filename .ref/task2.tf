@@ -9,7 +9,7 @@ resource "taikun_slack_configuration" "tfws_slack" {
 
 resource "taikun_alerting_profile" "tfws_alerting_profile" {
   name     = "tfws_alerting_profile"
-  reminder = "None"
+  reminder = "Daily"
 
   slack_configuration_id = resource.taikun_slack_configuration.tfws_slack.id
   organization_id        = resource.taikun_organization.tfws_organization.id
