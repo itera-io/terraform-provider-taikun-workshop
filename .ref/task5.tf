@@ -3,7 +3,7 @@ variable "task5_users" {
     email = string
     role  = string
     ssh_users = list(object({
-      username = string
+      username   = string
       public_key = string
     }))
   }))
@@ -19,7 +19,7 @@ resource "taikun_access_profile" "tfws_access_profile" {
   }
 
   dynamic "ssh_user" {
-    for_each = flatten([for item in var.task5_users: item.ssh_users])
+    for_each = flatten([for item in var.task5_users : item.ssh_users])
     content {
       name       = ssh_user.value.username
       public_key = ssh_user.value.public_key
