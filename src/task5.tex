@@ -80,6 +80,7 @@ The access profile's requirements are:
 \begin{itemize}
   \item It should use the DNS servers \texttt{8.8.8.8} and \texttt{1.1.1.1}.
   \item It should use the NTP server \texttt{time.windows.com}.
+  \item It should include all the SSH users defined in \texttt{users.auto.tfvars}.
 \end{itemize}
 
 \begin{tip}
@@ -96,7 +97,7 @@ Required:\\
 - name (String) Name of the extra topping\\
 - quantity (Number) Quantity
 \end{quote}
-Here is how Alice could add mozzarella di bufala and basil to her amatriciana pizza.
+Here is how Alice could add mozzarella di bufala and basil to her amatriciana pizza order.
 \begin{tf}
 resource "pizza_order" "orders" {
   client = "alice"
@@ -114,3 +115,31 @@ resource "pizza_order" "orders" {
 }
 \end{tf}
 \end{tip}
+
+We provide you with the code to define the SSH users of the access profile on the next page.
+However, if you wish to give it a go yourself first, here is how.\\
+
+To define the \texttt{ssh\_user} argument, you will need to use a
+\href{https://www.terraform.io/docs/language/expressions/dynamic-blocks.html}{dynamic block}
+with the \texttt{for\_each} keyword.
+You will also need to extract the list of all SSH users from the \texttt{users} variable.
+\href{https://www.terraform.io/docs/language/expressions/for.html}{for expressions} and
+the \href{https://www.terraform.io/docs/language/functions/flatten.html}{flatten function}
+will be of use.\\
+\pagebreak
+\begin{tf}
+resource "taikun_access_profile" "..." {
+
+  # ...
+  
+  dynamic "ssh_user" {
+    for_each = flatten([for user in var.users : user.ssh_users])
+    content {
+      name       = ssh_user.value.name
+      public_key = ssh_user.value.public_key
+    }
+  }
+}
+\end{tf}
+
+Once you have fully declared the access profile resource, apply your changes and move on to the next task.
