@@ -3,7 +3,7 @@
 \begin{note}
 For this task, please write your code in the file \texttt{task3.tf}
 at the root of the \texttt{workshop/} directory.\\
-You will also be editing \texttt{variables.tf} and \texttt{openstack.auto.tfvars}.
+You will also be editing \texttt{task3.auto.tfvars}.
 \end{note}
 
 In order to create a Taikun project, we will need cloud credentials.
@@ -11,10 +11,10 @@ You will be using the OpenStack credentials provided on the \textbf{\#terraform-
 Slack channel. In a real work environment, we wouldn't want to store our cloud credentials in version control,
 this is where input variables come into play.\\
 
-Start by editing \texttt{variables.tf}, variables are declared in this file by convention.
-As you can see, this file already contains the variables \texttt{taikun\_email} and
+Variables are declared in \texttt{variables.tf} by convention.
+If you have a look at its contents,
+this file declares the variables \texttt{taikun\_email} and
 \texttt{taikun\_password} used for authentication.
-
 \begin{tf}
 # variables.tf
 variable "taikun_email" {
@@ -46,7 +46,8 @@ variable "taikun_password" {
   Variables are then defined in \texttt{.tfvars} files, as you saw in \fullref{sec:auth}.\\
 \end{tip}
 
-Add the following variable declarations to the \texttt{variables.tf} file.
+For the sake of simplicity, variables will be declared in the \texttt{taskN.tf} files.
+Thus, in \texttt{task3.tf}, insert the following variable declarations.
 \begin{tf}
 variable "openstack_url" {
   description = "OpenStack url"
@@ -82,18 +83,17 @@ variable "openstack_project" {
 }
 \end{tf}
 \begin{note}
-  If copy-pasting this code block into \texttt{variables.tf} does not indent the code properly,
-  simply save \texttt{variables.tf} and run \texttt{terraform fmt}.
+  If copy-pasting this code block into \texttt{task3.tf} does not indent the code properly,
+  simply save \texttt{task3.tf} and run \texttt{terraform fmt}.
 \end{note}
 
 Now that the OpenStack variables have been declared,
-define the variables using the credentials provided on \textbf{\#terraform-workshop}, in \texttt{openstack.auto.tfvars}.
+define the variables using the credentials provided on \textbf{\#terraform-workshop}, in \texttt{task3.auto.tfvars}.
 
 \begin{tip}
 As a reminder, here is the syntax used in \texttt{taikun\_auth.auto.tfvars} to define the variables \texttt{taikun\_email}
 and \texttt{taikun\_password}.
 \begin{tf}
-# taikun_auth.auto.tfvars
 taikun_email = "jane.doe@itera.io"
 taikun_password = "PassWord123"
 \end{tf}
@@ -105,7 +105,7 @@ taikun_password = "PassWord123"
   \texttt{taikun\_auth.auto.tfvars}, Terraform will automatically fetch the variables' values.
 \end{tip}
 
-Now that your OpenStack variables have been declared and defined, you can define the OpenStack cloud credential resource.
+Now that your OpenStack variables have been declared and defined, you can define the OpenStack cloud credential resource in \texttt{task3.tf}.
 \href{https://intuinewin.github.io/taikun-docs/resources/cloud_credential_openstack.html}{Here} is its documentation.
 
 \begin{tip}
@@ -113,3 +113,13 @@ In order to get a variable's value, use the syntax \texttt{var.variable\_name}.
 For example, to set the OpenStack domain in your \texttt{cloud\_credential\_openstack} resource,
   you will write the following. \mint{terraform}|domain = var.openstack_domain|
 \end{tip}
+
+Once you have declared your new resource, apply your changes and move on to the next task.
+
+\begin{warn}
+  \begin{itemize}
+    \item Remember to follow the \texttt{tfws-<firstname>-<s>} naming convention when naming your cloud credential resource.
+    \item As always, your resources should belong to the organization you created in \fullref{sec:task0}.
+  \end{itemize}
+\end{warn}
+
