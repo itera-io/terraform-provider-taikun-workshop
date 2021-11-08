@@ -3,37 +3,114 @@
 \begin{note}
 For this task, please write your code in the file \texttt{task5.tf}
 at the root of the \texttt{workshop/} directory.\\
-You will also be editing \texttt{task5.auto.tfvars}.
+You will also be editing \texttt{users.tf} and \texttt{users.auto.tfvars}.
 \end{note}
 
-Before we can create our first project, we need an access profile.
-\href{https://intuinewin.github.io/taikun-docs/resources/access_profile.html}{Here is its documentation}.
-This access profile will have multiple SSH users. Once again, we would like
-to define those in a variable in order to avoid writing multiple \texttt{ssh\_user} blocks, as in the following example.
-\begin{tf}
-resource "taikun_access_profile" "foo" {
-  # ...
+Before we can create our first project, we need an access profile.\\
 
-  # This is what we want to avoid:
-  ssh_user {
-      name       = "alice"
-      public_key = "ssh-ed25519 AAAATHEQUICKBROWNFOXJUMPSOVERTHELAZYDOG alice"
-  }
-  ssh_user {
-      name       = "alice-home"
-      public_key = "ssh-ed25519 AAAATHEQUICKBROWNFOXJUMPSOVERTHELAZYDOG alice-home"
-  }
-  ssh_user {
-      name       = "bob"
-      public_key = "ssh-ed25519 AAAATHEQUICKBROWNFOXJUMPSOVERTHELAZYDOG bob"
-  }
-  ssh_user {
-      name       = "bob-home-laptop"
-      public_key = "ssh-ed25519 AAAATHEQUICKBROWNFOXJUMPSOVERTHELAZYDOG bob-home-laptop"
-  }
+We want our access profile to contain SSH keys for all the users we created in the previous task, \fullref{sec:task4}.
+Rather than declare the SSH keys in a separate variable, we will add them to the \texttt{users} variable to
+declare them on per user basis.\\
+
+Modify \texttt{users}'s declaration in \texttt{users.tf} to include a list of SSH users per user.
+\begin{tf}
+variable "users" {
+  type = map(object({
+    email = string
+    role  = string
+    ssh_users = list(object({
+      name       = string
+      public_key = string
+    }))
+  }))
+  description = "List of project users"
+  default     = {}
 }
 \end{tf}
 
+You can now edit \texttt{users.auto.tfvars} and add SSH users to each user.
+Considering our previous example of Alice and Bob, here is the same definition of \texttt{users}
+with added SSH users.
+\begin{tf}
+users = {
+  "alice" = {
+    email = "alice@gmail.com"
+    role  = "Manager"
+    ssh_users = [
+      {
+        name       = "alice-work"
+        public_key = "ssh-ed25519 AAAATHEQUICKBROWNFOXJUMPEDOVERTHELAZYDOG example"
+      },
+      {
+        name       = "alice-home"
+        public_key = "ssh-ed25519 AAAATHEQUICKBROWNFOXJUMPEDOVERTHELAZYDOG example"
+      }
+    ]
+  },
+  "bob" = {
+    email = "bob@gmail.com"
+    role  = "User"
+    ssh_users = [
+      {
+        name         = "bob-laptop"
+        public_key = "ssh-ed25519 AAAATHEQUICKBROWNFOXJUMPEDOVERTHELAZYDOG example"
+      }
+    ]
+  },
+}
+\end{tf}
+Add as many SSH users as you wish to the users you defined in the previous task.
+Of course, you will need to use valid SSH keys. If you do not wish to create your own,
+here is a public key value you can use:
+\begin{raw}
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB/8P0zXmI/Il81+/fnvGrf0X/VyNTrOJ9nQCxBxjc5m taikun
+\end{raw}
+
+\begin{warn}
+Within one access profile, the names of SSH users must be unique.
+\end{warn}
+
+You can now declare the \texttt{taikun\_access\_profile} resource in \texttt{task5.tf}.
 You will use \texttt{for\_each} in a slightly different manner as \texttt{ssh\_user} is a nested resource
 within the \texttt{access\_profile} resource.
+\href{https://intuinewin.github.io/taikun-docs/resources/access_profile.html}{Here}
+is the documentation of the access profile resource.\\
 
+The access profile's requirements are:
+\begin{itemize}
+  \item It should use the DNS servers \texttt{8.8.8.8} and \texttt{1.1.1.1}.
+  \item It should use the NTP server \texttt{time.windows.com}.
+\end{itemize}
+
+\begin{tip}
+While reading \href{https://intuinewin.github.io/taikun-docs/resources/access_profile.html}{access profile's schema},
+you will notice \texttt{dns\_server} and \texttt{ntp\_server} are of the type \textit{Block List}.\\
+
+Going back to the pizza order example, here is how block lists are used.
+Suppose the \texttt{pizza\_order} resource has an argument \texttt{extra\_topping} defined as such:
+\begin{quote}
+- extra\_topping (Block List, Max: 5) List of extra pizza toppings. (see below for nested schema)\\
+
+Nested Schema for extra\_topping\\
+Required:\\
+- name (String) Name of the extra topping\\
+- quantity (Number) Quantity
+\end{quote}
+Here is how Alice could add mozzarella di bufala and basil to her amatriciana pizza.
+\begin{tf}
+resource "pizza_order" "orders" {
+  client = "alice"
+  type   = "amatriciana"
+  size   = "large"
+
+  extra_topping {
+    name = "basil leaves"
+    quantity = 8
+  }
+  extra_topping {
+    name = "bufala slices"
+    quantity = 4
+  }
+}
+\end{tf}
+\end{tip}

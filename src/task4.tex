@@ -3,7 +3,7 @@
 \begin{note}
 For this task, please write your code in the file \texttt{task4.tf}
 at the root of the \texttt{workshop/} directory.\\
-You will also be editing \texttt{task4.auto.tfvars}.
+You will also be editing \texttt{users.tf} and \texttt{users.auto.tfvars}.
 \end{note}
 
 We will now add users to the Taikun organization.
@@ -11,14 +11,14 @@ As we may want to define a large amount of users, we will use variables
 and the keyword \texttt{for\_each} to avoid declaring multiple \texttt{taikun\_user}
 blocks.\\
 
-Add the following variable declaration to \texttt{task4.tf}.
+Add the following variable declaration to \texttt{users.tf}.
 \begin{tf}
 variable "users" {
   type = map(object({
     email = string
     role  = string
   }))
-  description = "Users List"
+  description = "List of project users"
   default     = {}
 }
 \end{tf}
@@ -45,7 +45,7 @@ In this example, we are defining user accounts for Alice and Bob.
   \item Alice has a Manager account with the username \texttt{alice} and the email \texttt{alice@gmail.com}.
   \item Bob has a User account with the username \texttt{bob} and the email \texttt{bob@gmail.com}.
 \end{itemize}
-Now edit \texttt{task4.auto.tfvars} and define three users.
+Now edit \texttt{users.auto.tfvars} and define three users.
 \begin{itemize}
   \item \texttt{tfws-<firstname>-manager} with Manager role and the email \texttt{tfws-<firstname>-manager@mail.example}.
   \item \texttt{tfws-<firstname>-user1} with User role and the email \texttt{tfws-<firstname>-user1@mail.example}.
