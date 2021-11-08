@@ -1,4 +1,4 @@
-users_t4 = {
+task4_users = {
   "tfws-user1" = {
     email = "user1@fakedomain.fr"
     role  = "User"

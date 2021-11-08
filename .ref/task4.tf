@@ -1,14 +1,14 @@
-variable "users_t4" {
+variable "task4_users" {
   type = map(object({
     email = string
     role  = string
   }))
-  description = "User List"
+  description = "Users List"
   default     = {}
 }
 
 resource "taikun_user" "user" {
-  for_each = var.users_t4
+  for_each = var.task4_users
 
   user_name = each.key
   email     = each.value.email
