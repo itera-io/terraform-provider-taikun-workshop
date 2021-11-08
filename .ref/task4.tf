@@ -1,20 +1,10 @@
 variable "users_t4" {
-  type        = map(map(string))
+  type = map(object({
+    email = string
+    role  = string
+  }))
   description = "User List"
-  default = {
-    "tfws-user1" = {
-      email = "user1@fakedomain.fr"
-      role  = "User"
-    },
-    "tfws-user2" = {
-      email = "user2@fakedomain.fr"
-      role  = "Manager"
-    },
-    "tfws-user3" = {
-      email = "user3@fakedomain.fr"
-      role  = "User"
-    },
-  }
+  default     = {}
 }
 
 resource "taikun_user" "user" {
@@ -23,4 +13,6 @@ resource "taikun_user" "user" {
   user_name = each.key
   email     = each.value.email
   role      = each.value.role
+
+  organization_id = resource.taikun_organization.tfws_organization.id
 }
