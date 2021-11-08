@@ -1,0 +1,30 @@
+\subsection{Task 7 (Bonus)}\label{sec:task7}
+
+\begin{note}
+For this task, please write all your code in the file \texttt{task7.tf}
+at the root of the \texttt{workshop/} directory.
+\end{note}
+
+Now that your project is in \texttt{Ready} state (and hopefully not \texttt{Failure},
+in which case you can run \texttt{terraform destroy}), you can attach some users to it.\\
+
+Declare a \href{https://intuinewin.github.io/taikun-docs/resources/project_user_attachment.html}{project user attachment}
+resource with the following \texttt{for\_each} argument, replacing \texttt{<label>} with the label you gave
+the \texttt{taikun\_user} resource.
+\begin{tf}
+  for_each = {
+    for user in resource.taikun_user.<label> : user.id => user
+    if user.role == "User"
+  }
+\end{tf}
+With this block, you will be able to attach only users with the User role to the project.
+To know more about this syntax, see the
+\href{https://www.terraform.io/docs/language/expressions/for.html}{documentation on for expressions}.\\
+
+Finally set the proper values for the \texttt{user\_id} and \texttt{project\_id} arguments
+and apply your changes.
+
+\vspace{3cm}
+\begin{center}
+\Huge{Fin}
+\end{center}
