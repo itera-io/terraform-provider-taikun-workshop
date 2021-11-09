@@ -2,7 +2,7 @@ data "taikun_flavors" "small" {
   cloud_credential_id = resource.taikun_cloud_credential_openstack.tfws_openstack.id
   min_cpu             = 2
   max_cpu             = 4
-  max_ram = 8
+  max_ram             = 8
 }
 
 locals {
@@ -22,19 +22,23 @@ resource "taikun_project" "tfws_project" {
   access_profile_id     = resource.taikun_access_profile.tfws_access_profile.id
 
   server_bastion {
-    name = "b"
+    name   = "b"
     flavor = local.flavors[0]
   }
 
   server_kubemaster {
-    name = "m"
+    name   = "m"
     flavor = local.flavors[0]
   }
 
   server_kubeworker {
-    name = "w"
+    name   = "w"
     flavor = local.flavors[0]
   }
 
   organization_id = resource.taikun_organization.tfws_organization.id
+}
+
+output "project_access_ip" {
+  value = resource.taikun_project.tfws_project.access_ip
 }
