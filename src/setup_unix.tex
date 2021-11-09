@@ -6,10 +6,7 @@ However, if you wish to use the prebuilt Docker image which already contains
 the workshop files, skip ahead to \fullref{sec:docker}.
 
 \subsection{Requirements}
-\begin{itemize}
-  \item You must have Terraform version 0.14 or newer installed.
-  \item To clone the required repositories, you need to join Itera's \href{https://github.com/itera-io}{GitHub organization}.
-\end{itemize}
+You must have Terraform version 0.14 or newer installed.
 
 \subsection{Installing Terraform}
 You can install Terraform using one of the popular package managers, or manually by
@@ -60,7 +57,7 @@ the provider must be installed locally.\\
 
 Start by cloning its GitHub repo.
 \begin{shell}
-git clone git@github.com:itera-io/terraform-provider-taikun.git
+git clone https://github.com/itera-io/terraform-provider-taikun.git
 \end{shell}
 Then run the following commands to install the provider on your machine.
 \begin{shell}
@@ -71,6 +68,8 @@ The provider will be installed at the following location.\\
 \texttt{~/.terraform.d/plugins/itera-io/dev/taikun/0.1.0/linux\_amd64/terraform-provider-taikun}.
 
 \subsection{Downloading the workshop files}
-Terraform config files with the minimal required configuration are provided for each task.
-Download the \texttt{workshop.zip} file from the Slack channel \textbf{\#terraform-workshop}
-and extract its contents in the directory of your choice.\\
+Clone the workshop directory and switch into the \texttt{workshop/} directory.
+\begin{shell}
+git clone https://github.com/itera-io/terraform-provider-taikun-workshop.git
+cd terraform-provider-taikun-workshop/workshop/
+\end{shell}
