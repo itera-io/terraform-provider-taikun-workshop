@@ -3,11 +3,11 @@ FROM ubuntu:impish
 WORKDIR /root
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update && apt-get install -y gnupg software-properties-common curl wget make unzip nano micro emacs-nox vim git
+RUN apt-get update && apt-get -y upgrade && apt-get -y install gnupg software-properties-common curl wget make unzip nano micro emacs-nox vim git
 
 # Go
 ENV PATH /usr/local/go/bin:$PATH
-RUN wget -O go.tgz https://golang.org/dl/go1.17.2.linux-amd64.tar.gz && tar -C /usr/local -xzf go.tgz
+RUN wget -O go.tgz https://golang.org/dl/go1.17.3.linux-amd64.tar.gz && tar -C /usr/local -xzf go.tgz
 
 # Terraform
 RUN curl -fsSL https://apt.releases.hashicorp.com/gpg | apt-key add -
