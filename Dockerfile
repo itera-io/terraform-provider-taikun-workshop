@@ -26,5 +26,4 @@ RUN curl -fsSL https://apt.releases.hashicorp.com/gpg | apt-key add - && \
     git clone https://github.com/hashivim/vim-terraform.git ~/.vim/pack/plugins/start/vim-terraform && \
     terraform -install-autocomplete
 
-ADD workshop /root/workshop
 WORKDIR /root/workshop
