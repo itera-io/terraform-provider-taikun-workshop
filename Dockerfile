@@ -3,7 +3,7 @@ FROM ubuntu:impish
 WORKDIR /root
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update && apt-get -y upgrade && apt-get -y install gnupg software-properties-common curl wget make unzip nano micro emacs-nox vim git
+RUN apt-get update && apt-get -y upgrade && apt-get -y install gnupg software-properties-common curl wget make unzip nano micro vim git
 
 # Go
 ENV PATH /usr/local/go/bin:$PATH
