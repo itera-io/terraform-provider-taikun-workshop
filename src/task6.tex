@@ -59,7 +59,26 @@ These are the requirements for the project resource:
 \end{tip}
 \pagebreak
 
-Once you have declared the project resource, go ahead and apply your changes.
+After creating a project with Terraform, one may want to know its access IP.
+Once you have declared the project resource, add the following output block to \texttt{task6.tf}.
+\begin{tf}
+output "project_access_ip" {
+  value = resource.taikun_project.<project-label>.access_ip
+}
+\end{tf}
+Make sure to replace \texttt{<project-label>} with the label you gave your project.
+This will display the project's access IP once it has been created.-
+\begin{tip}
+Output values are a way for the user to output a specific value from Terraform's state.\\
+
+An output value block begins with the keyword \texttt{output} followed by a unique label.
+By setting the \texttt{value} argument, the user can decide which value to output.\\
+
+To know more about output values, see 
+\href{https://www.terraform.io/docs/language/values/outputs.html}{Terraform's documentation}.
+\end{tip}
+
+You can now apply your changes.
 \begin{hint}
   The Taikun provider was built with the knowledge that you are probably getting hungry at this point.
   Thus, you can expect to wait about 30 minutes for your project to be in \texttt{Ready} state.
