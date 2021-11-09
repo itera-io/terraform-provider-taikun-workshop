@@ -1,13 +1,24 @@
-FROM ubuntu:impish
+FROM golang:1.17.2-alpine AS build
+
+WORKDIR /src
+ENV CGO_ENABLED=0
+
+# Build provider
+COPY assets/terraform-provider-taikun .
+RUN GOOS=linux GOARCH=amd64 go build -o /out/terraform-provider-taikun .
+
+FROM ubuntu:impish AS bin
 
 WORKDIR /root
 ENV DEBIAN_FRONTEND=noninteractive
 
+# Get packages
 RUN apt-get update && apt-get -y upgrade && apt-get -y install gnupg software-properties-common curl wget make unzip nano micro vim git
 
-# Go
-ENV PATH /usr/local/go/bin:$PATH
-RUN wget -O go.tgz https://golang.org/dl/go1.17.3.linux-amd64.tar.gz && tar -C /usr/local -xzf go.tgz
+# Install provider
+ADD assets/terraform-provider-taikun /root/terraform-provider-taikun
+COPY --from=build /out/terraform-provider-taikun /root/terraform-provider-taikun
+RUN cd terraform-provider-taikun && make commoninstall
 
 # Terraform
 RUN curl -fsSL https://apt.releases.hashicorp.com/gpg | apt-key add -
@@ -17,12 +28,8 @@ RUN apt-get install -y terraform
 RUN git clone https://github.com/hashivim/vim-terraform.git ~/.vim/pack/plugins/start/vim-terraform
 RUN terraform -install-autocomplete
 
-# Provider
-ADD assets/terraform-provider-taikun /root/terraform-provider-taikun
-RUN cd terraform-provider-taikun && make install
-
 # Cleanup
-RUN rm -rf go.tgz terraform-provider-taikun-main terraform-provider-taikun-main.zip
+RUN rm -rf terraform-provider-taikun-main terraform-provider-taikun-main.zip
 
 # Workshop
 ADD workshop /root/workshop

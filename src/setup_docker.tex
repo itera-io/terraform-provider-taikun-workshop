@@ -12,7 +12,7 @@ git clone --recursive https://github.com/itera-io/terraform-provider-taikun-work
 \subsection{Docker image creation}
 You'll need to build the image, this operation can take several minutes.
 \begin{shell}
-docker build -t tf-workshop .
+DOCKER_BUILDKIT=1 docker build --rm --target bin -t tf-workshop .
 \end{shell}
 
 \subsection{Docker container creation}
