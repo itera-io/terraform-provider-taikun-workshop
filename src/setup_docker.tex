@@ -1,21 +1,19 @@
 \section{Setup using Docker}\label{sec:docker}
 
-You can choose to build and use a Docker image to complete this workshop.
-
 \subsection{Requirements}
+\begin{itemize}
+  \item You must have Docker and Git installed.
+  \item To clone the required repositories, you need to join Itera's \href{https://github.com/itera-io}{GitHub organization}.
+\end{itemize}
 
-You must have Docker and Git installed.\\
-You need to clone the workshop repository which contains all the files you'll need.\\
-In order to clone this repository, you'll need a Github account and to join the \href{https://github.com/itera-io}{Itera organization} on Github.
-
+\subsection{Setup}
+Start by cloning the workshop repository.
 \begin{shell}
 git clone --recursive git@github.com:itera-io/terraform-provider-taikun-workshop.git
 \end{shell}
 
 \subsection{Docker image creation}
-
-First, you'll need to build the image, this operation can take several minutes.
-
+You'll need to build the image, this operation can take several minutes.
 \begin{shell}
 docker build -t tf-workshop .
 \end{shell}
@@ -26,13 +24,18 @@ To create the Docker container, run the following command.
 docker run --name tf-workshop -it tf-workshop
 \end{shell}
 You are now logged in to the container as root. The workshop files,
-Terraform and the Taikun Terraform provider are already installed.\\
+Terraform and the Taikun Terraform provider are already installed.
+You can exit the container at any time without losing your progress.
 
-You can exit the container without losing your progress; simply restart it with:
+\subsection{Restarting the Docker container}
+If you have exited the Docker container, run the following command to restart it.
 \begin{shell}
 docker start -i tf-workshop
 \end{shell}
-As you will need to edit text files, the Docker image has the \texttt{vim},
+
+\subsection{Text editing}
+As you will need to edit text files on the command line,
+the Docker image has the \texttt{vim},
 \texttt{emacs}, \texttt{micro} and \texttt{nano} packages installed.
 If you are unfamiliar with Emacs and Vim keybindings, the Micro editor
 has traditional Common User Access keybindings (\texttt{Ctrl-C} for copy,

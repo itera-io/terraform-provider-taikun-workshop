@@ -5,16 +5,23 @@ then download the workshop files.
 However, if you wish to use the prebuilt Docker image which already contains
 the workshop files, skip ahead to \fullref{sec:docker}.
 
-\subsection{Terraform installation}
-You must have Terraform version 0.14 or newer installed.
-\subsubsection{MacOS with Homebrew}
+\subsection{Requirements}
+\begin{itemize}
+  \item You must have Terraform version 0.14 or newer installed.
+  \item To clone the required repositories, you need to join Itera's \href{https://github.com/itera-io}{GitHub organization}.
+\end{itemize}
+
+\subsection{Installing Terraform}
+You can install Terraform using one of the popular package managers, or manually by
+download the binary.
+\subsubsection{Homebrew on MacOS}
 \begin{shell}
 brew tap hashicorp/tap
 brew update
 brew install hashicorp/tap/terraform
 \end{shell}
 
-\subsubsection{Ubuntu/Debian with Apt}
+\subsubsection{Apt on Ubuntu or Debian}
 \begin{shell}
 sudo apt-get update && sudo apt-get install -y gnupg software-properties-common curl
 curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
@@ -23,30 +30,35 @@ sudo apt-add-repository \
 sudo apt-get update && sudo apt-get install terraform
 \end{shell}
 
-\subsubsection{Archlinux with Pacman}
+\subsubsection{Pacman on Archlinux}
 \begin{shell}
 sudo pacman -S terraform
 \end{shell}
 
 \subsubsection{Manually}
-Download the proper package from the \href{https://www.terraform.io/downloads.html}{Download Terraform} page and unzip it to extract the \texttt{terraform} binary.\\
-List the directories in your \texttt{PATH}.
+Download the proper package from the \href{https://www.terraform.io/downloads.html}{Download Terraform page}
+and unzip it to extract the \texttt{terraform} binary.
+Then place the binary in your \texttt{PATH}.\\
+
+Run the following command to display a colon-separated list of directories in your \texttt{PATH}.
 \begin{shell}
 echo $PATH
 \end{shell}
-Place the \texttt{terraform} binary in one of the listed directories (avoid putting it in \texttt{/usr/bin} or \texttt{/usr/local/sbin}).
-For example:
+This might output the following.
 \begin{raw}
-$ echo $PATH
 /usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl
-$ sudo mv ~/Downloads/terraform /usr/local/bin/
 \end{raw}
+Place the \texttt{terraform} binary in one of the listed directories (avoid putting it in \texttt{/usr/bin} or \texttt{/usr/local/sbin} if you can).
+For example:
+\begin{shell}
+sudo mv ~/Downloads/terraform /usr/local/bin/
+\end{shell}
 
 \subsection{Installing the Taikun provider}
-Until the provider is listed on Terraform's \href{https://registry.terraform.io/browse/providers}{plugin registry}, the provider must be installed locally.
-Start by cloning the GitHub repo.
-You will need to join the \href{https://github.com/itera-io/}{itera-io GitHub organization}
-as the repo is currently private.
+Until the provider is listed on Terraform's \href{https://registry.terraform.io/browse/providers}{plugin registry},
+the provider must be installed locally.\\
+
+Start by cloning its GitHub repo.
 \begin{shell}
 git clone git@github.com:itera-io/terraform-provider-taikun.git
 \end{shell}
@@ -55,16 +67,10 @@ Then run the following commands to install the provider on your machine.
 cd terraform-provider-taikun
 make dockerinstall
 \end{shell}
-The provider will be installed at:\\
+The provider will be installed at the following location.\\
 \texttt{~/.terraform.d/plugins/itera-io/dev/taikun/0.1.0/linux\_amd64/terraform-provider-taikun}.
 
 \subsection{Downloading the workshop files}
 Terraform config files with the minimal required configuration are provided for each task.
-Download the \texttt{workshop.zip} file from [insert method of distribution] % slack channel? git repo?
+Download the \texttt{workshop.zip} file from the Slack channel \textbf{\#terraform-workshop}
 and extract its contents in the directory of your choice.\\
-
-To do so from the command line, type the following command.
-\begin{shell}
-unzip workshop.zip
-\end{shell}
-This will extract the \texttt{workshop} directory into your working directory.
