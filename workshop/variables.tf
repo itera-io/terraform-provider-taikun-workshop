@@ -10,5 +10,3 @@ variable "taikun_password" {
   type        = string
   sensitive   = true
 }
-
-# FIXME
