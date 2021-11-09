@@ -21,13 +21,17 @@ docker build -t tf-workshop .
 \end{shell}
 
 \subsection{Docker container creation}
-
-The following commands runs the Docker image.
+To create the Docker container, run the following command.
 \begin{shell}
-docker run -it tf-workshop
+docker run --name tf-workshop -it tf-workshop
 \end{shell}
 You are now logged in to the container as root. The workshop files,
 Terraform and the Taikun Terraform provider are already installed.\\
+
+You can exit the container without losing your progress, simply restart it with:
+\begin{shell}
+docker start -i tf-workshop
+\end{shell}
 
 As you will need to edit text files, the Docker image has the \texttt{vim},
 \texttt{emacs}, \texttt{micro} and \texttt{nano} packages installed.
