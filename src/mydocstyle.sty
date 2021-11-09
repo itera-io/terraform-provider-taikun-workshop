@@ -162,6 +162,21 @@ skip=10pt plus 2pt,after skip=20pt plus 2pt,title=Tip]
 \end{center}
 }
 
+\newenvironment{cmd}{%
+\definecolor{sectboxrulecol}{rgb}{0.8,0.8,0.8}
+\VerbatimEnvironment{}
+\begin{center}%
+\framesectionbox{}
+\begin{sectionbox}{}
+\begin{minipage}{\linewidth}%
+\begin{Verbatim}
+}%
+{
+\end{Verbatim}%
+\end{minipage}%
+\end{sectionbox}
+\end{center}}
+
 \newenvironment{raw}{%
 \definecolor{sectboxfillcol}{rgb}{1,1,1}
 \VerbatimEnvironment{}
