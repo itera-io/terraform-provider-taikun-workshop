@@ -1,4 +1,4 @@
-\subsection{Task 5}\label{sec:task5}
+\subsection{Task 5: Access Profile}\label{sec:task5}
 
 \begin{note}
 For this task, please write your code in the file \texttt{task5.tf}
@@ -6,10 +6,10 @@ at the root of the \texttt{workshop/} directory.\\
 You will also be editing \texttt{users.tf} and \texttt{users.auto.tfvars}.
 \end{note}
 
-Before we can create our first project, we need an access profile.\\
+Before creating your first project, you will need an access profile.\\
 
-We want our access profile to contain SSH keys for all the users we created in the previous task, \fullref{sec:task4}.
-Rather than declare the SSH keys in a separate variable, we will add them to the \texttt{users} variable to
+The access profile must contain SSH keys for all the users created in the previous task, \fullref{sec:task4}.
+Rather than declare the SSH keys in a separate variable, you will add them to the \texttt{users} variable to
 declare them on per user basis.\\
 
 Modify \texttt{users}'s declaration in \texttt{users.tf} to include a list of SSH users per user.
@@ -28,8 +28,8 @@ variable "users" {
 }
 \end{tf}
 
-You can now edit \texttt{users.auto.tfvars} and add SSH users to each user.
-Considering our previous example of Alice and Bob, here is the same definition of \texttt{users}
+You can now edit \texttt{users.auto.tfvars} and define a list of SSH users for each user.
+Considering the previous example of Alice and Bob, here is the same definition of \texttt{users}
 with added SSH users.
 \begin{tf}
 users = {
@@ -52,14 +52,14 @@ users = {
     role  = "User"
     ssh_users = [
       {
-        name         = "bob-laptop"
+        name       = "bob-laptop"
         public_key = "ssh-ed25519 AAAATHEQUICKBROWNFOXJUMPEDOVERTHELAZYDOG example"
       }
     ]
   },
 }
 \end{tf}
-Add as many SSH users as you wish to the users you defined in the previous task.
+Add as many SSH users as you wish to the users defined in the previous task.
 Of course, you will need to use valid SSH keys. If you do not wish to create your own,
 here is a public key value you can use:
 \begin{raw}
@@ -85,7 +85,7 @@ The access profile's requirements are:
 
 \begin{tip}
 While reading \href{https://intuinewin.github.io/taikun-docs/resources/access_profile.html}{access profile's schema},
-you will notice \texttt{dns\_server} and \texttt{ntp\_server} are of the type \textit{Block List}.\\
+you may notice \texttt{dns\_server} and \texttt{ntp\_server} are of the type \textit{Block List}.\\
 
 Going back to the pizza order example, here is how block lists are used.
 Suppose the \texttt{pizza\_order} resource has an argument \texttt{extra\_topping} defined as such:
@@ -115,8 +115,10 @@ resource "pizza_order" "orders" {
 }
 \end{tf}
 \end{tip}
+\pagebreak
 
-We provide you with the code to define the SSH users of the access profile on the next page.
+\begin{note}
+The code to define the SSH users of the access profile is provided below.
 However, if you wish to give it a go yourself first, here is how.\\
 
 To define the \texttt{ssh\_user} argument, you will need to use a
@@ -125,8 +127,11 @@ with the \texttt{for\_each} keyword.
 You will also need to extract the list of all SSH users from the \texttt{users} variable.
 \href{https://www.terraform.io/docs/language/expressions/for.html}{for expressions} and
 the \href{https://www.terraform.io/docs/language/functions/flatten.html}{flatten function}
-will be of use.\\
-\pagebreak
+will be of use.
+\end{note}
+\vfill
+{\Large{Spoiler ahead!}}
+\vfill
 \begin{tf}
 resource "taikun_access_profile" "..." {
 

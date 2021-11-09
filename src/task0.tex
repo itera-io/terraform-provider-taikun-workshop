@@ -1,4 +1,4 @@
-\subsection{Task 0}\label{sec:task0}
+\subsection{Task 0: Organization}\label{sec:task0}
 
 \begin{note}
 For this task, please write your code in the file \texttt{task0.tf}
@@ -7,7 +7,7 @@ at the root of the \texttt{workshop/} directory.
 
 This objective of this first task is to create an organization.
 All resources created in the future will be part of this organization.
-As this is the first task, you will be guided through every step of the process.\\
+As this is the first task, every step of the process is documented.\\
 
 Before you do anything, start by preparing your working directory for other commands.
 \begin{shell}
@@ -23,7 +23,7 @@ Initializing the backend...
 [...]
 Terraform has been successfully initialized!
 \end{raw}
-If you got an error of the following type, the Taikun provider was not correctly installed.
+If you got an error of the following type, the Taikun provider was not installed correctly.
 \begin{raw}
 | Error: Failed to query available provider packages
 |
@@ -45,18 +45,18 @@ Be sure to replace \texttt{<firstname>} with your firstname and \texttt{<s>} wit
 names of your choosing. You can also choose another label instead of \texttt{myorg}.
 
 \begin{tip}
-Notice the syntax of the configuration block, as we are creating a resource,
-we begin with the keyword \texttt{resource}, followed by its type between double quotes.
+Notice the syntax of the configuration block, as you are creating a resource,
+it begins with the keyword \texttt{resource}, followed by its type between double quotes.
 The type of resource is always lowercase and prefixed by the name of the provider,
 thus \texttt{"taikun\_organization"}.
-Finally we have a label, it must be unique for this type of resource, and is used
+Following the resource's type is a label, it must be unique for this type of resource, and is used
 to refer to this specific resource, as you will find out later.
 Watch out, this label does not correspond to the name of the resource in Taikun.\\
 
-We then define three arguments: \texttt{name}, \texttt{full\_name} and \texttt{discount\_rate}.
+Three arguments are then defined: \texttt{name}, \texttt{full\_name} and \texttt{discount\_rate}.
 On the left side of the equals sign is the argument's identifier, on the right is its value.
 See the \href{https://intuinewin.github.io/taikun-docs/resources/organization.html}{documentation of Taikun's organization resource} for a full list of arguments, i.e. the resource's \textit{schema}.
-Here we did not bother to define any of the optional arguments, only the required ones.\\
+Here, none of the optional arguments are defined, only the required ones.\\
 
 Labels and argument names can contain letters, digits, underscores and hyphens and may not start with a digit.
 \end{tip}
@@ -67,7 +67,7 @@ terraform fmt
 Now apply your changes.
 \begin{tip}
 If you have already created resources, \texttt{apply} will refresh Terraform's state
-by making request to Taikun's API. If you wish to check your changes are valid
+by making request to Taikun's API. If you wish to check the validity of your changes
 without refreshing the state, you can run \texttt{terraform validate}.
 \end{tip}
 \begin{shell}
@@ -79,7 +79,7 @@ Error: expected discount_rate to be in the range (0.000000 - 100.000000), got 12
 \end{raw}
 Now fix the discount rate so it is in the range 0-100 and run \texttt{apply} once more.
 Terraform will display a list of resources to create.
-After checking the plan is correct, type \texttt{yes} to confirm it.
+After checking the plan is correct, type \texttt{yes} to execute it.
 \begin{tip}
 You should notice a file \texttt{terraform.tfstate} in your working directory,
 Terraform uses this file to keep track of the state, do not modify or delete it.
@@ -112,11 +112,12 @@ resource "taikun_organization" "myorg" {
     servers                          = 0
 }
 \end{raw}
-You may wish to check the organization was indeed created at \url{https://app.taikun.dev/organizations}.
+You may wish to check the organization was indeed created at
+\href{https://app.taikun.dev/organizations}{app.taikun.dev/organizations}.
 \begin{tip}
 Try running \texttt{terraform apply} again, Terraform will refresh its state, and, as long as
 nothing has changed, tell you that no changes are needed.\\
 
-You can also try deleting the organization through the web UI and then run \texttt{terraform apply}.
-Terraform will tell you that changes have occured outside of Terraform and will recreate the resource.
+You can also try deleting the organization through the web UI and running \texttt{terraform apply}.
+Terraform will tell you that changes have occured outside of Terraform and recreate the resource.
 \end{tip}

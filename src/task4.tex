@@ -1,4 +1,4 @@
-\subsection{Task 4}\label{sec:task4}
+\subsection{Task 4: Users}\label{sec:task4}
 
 \begin{note}
 For this task, please write your code in the file \texttt{task4.tf}
@@ -6,8 +6,8 @@ at the root of the \texttt{workshop/} directory.\\
 You will also be editing \texttt{users.tf} and \texttt{users.auto.tfvars}.
 \end{note}
 
-We will now add users to the Taikun organization.
-As we may want to define a large amount of users, we will use variables
+You will now add users to the Taikun organization.
+As the organization could have a large amount of users, you will use variables
 and the keyword \texttt{for\_each} to avoid declaring multiple \texttt{taikun\_user}
 blocks.\\
 
@@ -23,7 +23,8 @@ variable "users" {
 }
 \end{tf}
 
-Here we are defining a complex type: a map of objects with two arguments, \texttt{email} and \texttt{role}.
+The \texttt{users} variable is of a complex type:
+a map of objects with two arguments, \texttt{email} and \texttt{role}.
 The keys of the map are strings, they will be the usernames of the users.
 The \texttt{default = \{\}} argument definition tells Terraform that the default value of \texttt{var.users} is an empty map.\\
 
@@ -40,7 +41,7 @@ users = {
   },
 }
 \end{tf}
-In this example, we are defining user accounts for Alice and Bob.
+In this example, user accounts are defined for Alice and Bob.
 \begin{itemize}
   \item Alice has a Manager account with the username \texttt{alice} and the email \texttt{alice@gmail.com}.
   \item Bob has a User account with the username \texttt{bob} and the email \texttt{bob@gmail.com}.
@@ -53,13 +54,14 @@ Now edit \texttt{users.auto.tfvars} and define three users.
 \end{itemize}
 As always, replace \texttt{<firstname>} with your firstname.\\
 
-You can now declare the user resource in \texttt{task4.tf}, your users must belong to the organization you created in \fullref{sec:task0}.
+You can now declare the user resource in \texttt{task4.tf}, the users must belong to the organization created in \fullref{sec:task0}.
 \href{https://intuinewin.github.io/taikun-docs/resources/user.html}{Here} is its documentation.
-By using the \texttt{for\_each} keyword, you will only need to define one resource block.
+By using the \texttt{for\_each} keyword, only one resource block is needed.
 
 \begin{tip}
-  To understand the \texttt{for\_each} keyword, let us consider a Terraform provider to order pizzas.
-  Suppose we define the following map variable, \texttt{pizza\_orders}.
+  Here is an example using the \texttt{for\_each} keyword.
+  Consider a Terraform provider to order pizzas.
+  Suppose the variable \texttt{pizza\_orders} has the following definition.
   \begin{tf}
 pizza_orders = {
   "alice" = {
@@ -72,7 +74,7 @@ pizza_orders = {
   },
 }
   \end{tf}
-  Here is how we would use it and the \texttt{for\_each} keyword in a \texttt{pizza\_order} resource.
+  Here is how it would be used with the \texttt{for\_each} keyword in a \texttt{pizza\_order} resource.
   \begin{tf}
 resource "pizza_order" "orders" {
   for_each = var.pizza_orders

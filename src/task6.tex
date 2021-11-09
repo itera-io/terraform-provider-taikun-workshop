@@ -1,15 +1,15 @@
-\subsection{Task 6}\label{sec:task6}
+\subsection{Task 6: Project}\label{sec:task6}
 
 \begin{note}
 For this task, please write all your code in the file \texttt{task6.tf}
 at the root of the \texttt{workshop/} directory.
 \end{note}
 
-Finally, we can now declare our project resource.
-However, as we will need to bind flavors to the project, we must first fetch
-a list of suitable flavors.\\
+Finally, you can declare a project resource.
+However, as flavors must be bound to the project,
+you must first fetch a list of suitable flavors.\\
 
-To do this, we shall declare a \href{https://intuinewin.github.io/taikun-docs/data-sources/flavors.html}{flavors datasource}.
+To do this, declare a \href{https://intuinewin.github.io/taikun-docs/data-sources/flavors.html}{flavors datasource}.
 Datasources, as opposed to resources, only fetch information from providers and do not create any resources.
 Add the following block to \texttt{task6.tf}.
 \begin{tf}
@@ -17,8 +17,12 @@ data "taikun_flavors" "small" {
   # FIXME
 }
 \end{tf}
-As we are declaring a datasource and not a resource, we start with the keyword \texttt{data} instead of \texttt{resource}. Once again, the type of datasource is in lowercase and must be prefixed by the name of the provider.
-Finally we choose the label \texttt{"small"} to designate this datasource.\\
+
+\begin{tip}
+As you are declaring a datasource and not a resource, the block begins with the keyword \texttt{data} instead of \texttt{resource}.
+Once again, the type of datasource is in lowercase and must be prefixed by the name of the provider.
+Finally, the label \texttt{"small"} is used to designate this datasource.
+\end{tip}
 
 Edit the datasource to search for flavors with 4 or fewer CPUs and no more than 8GB of RAM.
 Set its cloud credential ID to that of the cloud credential created in \fullref{sec:task3}.\\
@@ -35,7 +39,7 @@ locals {
 This will allow you to refer to the list of flavor names with \texttt{local.flavors},
 which will be useful when defining the project.\\
 
-We now have everything we need to create a project in Taikun.
+You now have everything you need to create a project in Taikun.
 \href{https://intuinewin.github.io/taikun-docs/resources/project.html}{Here} is its documentation.\\
 
 These are the requirements for the project resource:
@@ -53,6 +57,7 @@ These are the requirements for the project resource:
   For example, to get the first flavor read by the \texttt{flavors} datasource,
   use \texttt{local.flavors[0]}.
 \end{tip}
+\pagebreak
 
 Once you have declared the project resource, go ahead and apply your changes.
 \begin{hint}

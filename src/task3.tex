@@ -1,4 +1,4 @@
-\subsection{Task 3}\label{sec:task3}
+\subsection{Task 3: Cloud Credentials}\label{sec:task3}
 
 \begin{note}
 For this task, please write your code in the file \texttt{task3.tf}
@@ -6,14 +6,13 @@ at the root of the \texttt{workshop/} directory.\\
 You will also be editing \texttt{task3.auto.tfvars}.
 \end{note}
 
-In order to create a Taikun project, we will need cloud credentials.
+Cloud credentials are needed to create a Taikun project.
 You will be using the OpenStack credentials provided on the \textbf{\#terraform-workshop}
-Slack channel. In a real work environment, we wouldn't want to store our cloud credentials in version control,
-this is where input variables come into play.\\
+Slack channel. In a real work environment, cloud credentials should not be stored under version control;
+Terraform's input variables help solve this problem.\\
 
 Variables are declared in \texttt{variables.tf} by convention.
-If you have a look at its contents,
-this file declares the variables \texttt{taikun\_email} and
+This file declares the variables \texttt{taikun\_email} and
 \texttt{taikun\_password} used for authentication.
 \begin{tf}
 # variables.tf
@@ -37,16 +36,16 @@ variable "taikun_password" {
   \begin{itemize}
     \item The \texttt{description} argument is used to specifiy the variable's documentation.
     \item \texttt{type} is the type of this argument's value.
-    \item If set to \texttt{true}, \texttt{sensitive} will hide this variable's value in Terraform output. It defaults to false.
+    \item If set to \texttt{true}, \texttt{sensitive} will hide this variable's value in Terraform output. It defaults to \texttt{false}.
   \end{itemize}
 
   To know more about input variables and a full list of arguments,
   see the \href{https://www.terraform.io/docs/language/values/variables.html}{Terraform documentation on variables}.\\
 
-  Variables are then defined in \texttt{.tfvars} files, as you saw in \fullref{sec:auth}.\\
+  Variables are then defined in \texttt{.tfvars} files, as seen in \fullref{sec:auth}.\\
 \end{tip}
 
-For the sake of simplicity, variables will be declared in the \texttt{taskN.tf} files.
+For the sake of simplicity, variables will be declared in the \texttt{task*.tf} files.
 Thus, in \texttt{task3.tf}, insert the following variable declarations.
 \begin{tf}
 variable "openstack_url" {
@@ -84,7 +83,7 @@ variable "openstack_project" {
 \end{tf}
 \begin{note}
   If copy-pasting this code block into \texttt{task3.tf} does not indent the code properly,
-  simply save \texttt{task3.tf} and run \texttt{terraform fmt}.
+  save \texttt{task3.tf} and run \texttt{terraform fmt}.
 \end{note}
 
 Now that the OpenStack variables have been declared,
@@ -102,21 +101,21 @@ taikun_password = "PassWord123"
 \end{tf}
 \end{tip}
 
-Now that your OpenStack variables have been declared and defined, you can define the OpenStack cloud credential resource in \texttt{task3.tf}.
+Now that the OpenStack variables have been declared and defined, define the OpenStack cloud credential resource in \texttt{task3.tf}.
 \href{https://intuinewin.github.io/taikun-docs/resources/cloud_credential_openstack.html}{Here} is its documentation.
 
 \begin{tip}
-In order to get a variable's value, use the syntax \texttt{var.variable\_name}.
-For example, to set the OpenStack domain in your \texttt{cloud\_credential\_openstack} resource,
-  you will write the following. \mint{terraform}|domain = var.openstack_domain|
+In order to get a variable's value, use the syntax \texttt{var.<variable\_name>}.
+For example, the following line sets the OpenStack domain in the \texttt{cloud\_credential\_openstack} resource.
+\mint{terraform}|domain = var.openstack_domain|
 \end{tip}
 
 Once you have declared your new resource, apply your changes and move on to the next task.
 
 \begin{warn}
   \begin{itemize}
-    \item Remember to follow the \texttt{tfws-<firstname>-<s>} naming convention when naming your cloud credential resource.
-    \item As always, your resources should belong to the organization you created in \fullref{sec:task0}.
+    \item Remember to follow the \texttt{tfws-<firstname>-<s>} naming convention when naming the cloud credential resource.
+    \item As always, your resources should belong to the organization created in \fullref{sec:task0}.
   \end{itemize}
 \end{warn}
 

@@ -4,7 +4,7 @@ If you are on Linux or MacOS,
 you can choose to install Terraform and the Taikun provider on your machine and
 then download the workshop files.
 However, if you wish to use the prebuilt Docker image which already contains
-the workshop files skip ahead to \fullref{sec:docker}.
+the workshop files, skip ahead to \fullref{sec:docker}.
 
 \begin{warn}
 If you are using Windows, skip ahead to \fullref{sec:docker}.
@@ -20,7 +20,7 @@ If you are using Windows, skip ahead to \fullref{sec:docker}.
 
 \subsection{Installing Terraform}
 You can install Terraform using one of the popular package managers, or manually by
-download the binary.
+downloading the binary.
 \subsubsection{Homebrew on MacOS}
 \begin{shell}
 brew tap hashicorp/tap
@@ -51,7 +51,7 @@ Run the following command to display a colon-separated list of directories in yo
 \begin{shell}
 echo $PATH
 \end{shell}
-This might output the following.
+The output might resemble the following.
 \begin{raw}
 /usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl
 \end{raw}
@@ -75,7 +75,7 @@ run the following command to build and install the provider on your machine.
 \begin{shell}
 make install
 \end{shell}
-Or if you wish to build it using docker, run:
+Or if you wish to build it using Docker, run:
 \begin{shell}
 make dockerinstall
 \end{shell}

@@ -8,7 +8,7 @@ configuration files.
 By following a step by step process, you will discover how various Taikun
 resources are declared and managed using Terraform.\\
 
-All your work will be done in the \texttt{workshop/} directory.
+All your work will be done in the \texttt{workshop/} directory. These are its initial contents.
 \begin{raw}
 ./workshop/
 |-- main.tf
@@ -32,11 +32,12 @@ provider "taikun" {
   password = var.taikun_password
 }
 \end{tf}
-In fact, Terraform reads its configuration from all the files with the extension \texttt{.tf},
-in the working directory. The extension \texttt{.tfvars} will be discussed later.
-Having the provider configuration in \texttt{main.tf} is simply a convention.
-During this workshop, each task should be coded in a separate config file,
-such that, at the end of the workshop, your directory is organized as such:
+Terraform reads its configuration from all the files with the extension \texttt{.tf},
+in the working directory.
+Having the provider configuration in \texttt{main.tf} is simply a convention.\\
+
+During this workshop, each task should be coded in a separate config file.
+At the end of the workshop, your directory will be organized as such:
 \begin{raw}
 ./workshop/
 |-- main.tf
@@ -54,7 +55,6 @@ such that, at the end of the workshop, your directory is organized as such:
 |-- users.auto.tfvars
 |-- users.tf
 \end{raw}
-% TODO update as tasks are added
 
 \begin{warn}
   Throughout this workshop, in order to avoid conflicts and
@@ -70,10 +70,10 @@ such that, at the end of the workshop, your directory is organized as such:
 
 \subsection{Authentication}\label{sec:auth}
 In order to complete the tasks that follow, you will need to provide Taikun credentials to Terraform.
-You will be using a Partner account, as some of the tasks, such as creating an organization,
+You will be using a Partner account as some of the tasks, such as creating an organization,
 require Partner privileges.\\
 
-We will explain how input variables work later in the workshop.
+Input variables will be explained later in the workshop.
 For now, simply edit \texttt{taikun\_auth.auto.tfvars}
 and replace the values of \texttt{taikun\_email} and \texttt{taikun\_password}
 with the credentials provided on the \textbf{\#terraform-workshop} Slack channel.
@@ -83,12 +83,3 @@ taikun_email = "jane.doe@itera.io"
 taikun_password = "PassWord123"
 \end{tf}
 To find out more about providing sensitive data to Terraform, see this \href{https://learn.hashicorp.com/tutorials/terraform/sensitive-variables}{Hashicorp tutorial}.
-
-\input{task0}
-\input{task1}
-\input{task2}
-\input{task3}
-\input{task4}
-\input{task5}
-\input{task6}
-\input{task7}

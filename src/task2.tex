@@ -1,19 +1,19 @@
-\subsection{Task 2}\label{sec:task2}
+\subsection{Task 2: Slack Configuration \& Alerting Profile}\label{sec:task2}
 
 \begin{note}
 For this task, please write your code in the file \texttt{task2.tf}
 at the root of the \texttt{workshop/} directory.
 \end{note}
 
-We now want to create an alerting profile with a Slack configuration.
+You will now create an alerting profile using a Slack configuration.
 
 \begin{enumerate}
-  \item Start by declaring your Slack configuration.
+  \item Start by declaring a Slack configuration.
   \href{https://intuinewin.github.io/taikun-docs/resources/slack_configuration.html}{Here} is its documentation.\\
 
-The hook URL should be \texttt{https://hooks.myapp.example/ci}.
-We wish to send \textbf{alert-type notifications only} to the channel \texttt{ci}.
-  \item We can now declare the alerting profile.
+Its hook URL should be \texttt{https://hooks.myapp.example/ci}.
+It must send \textbf{alert-type notifications only} to the channel \texttt{ci}.
+  \item You can now declare the alerting profile.
     \href{https://intuinewin.github.io/taikun-docs/resources/alerting_profile.html}{Here} is its documentation.\\
     The alerting profile should send notifications \textbf{daily} using the Slack configuration declared above.
 \end{enumerate}
@@ -21,8 +21,8 @@ We wish to send \textbf{alert-type notifications only} to the channel \texttt{ci
 \begin{warn}
   \begin{itemize}
     \item Remember to follow the \texttt{tfws-<firstname>-<s>} naming convention when naming your resources.
-    \item As always, your resources should belong to the organization you created in \fullref{sec:task0}.
+    \item As always, your resources should belong to the organization created in \fullref{sec:task0}.
   \end{itemize}
 \end{warn}
 
-Once you have declared your two new resources, apply your changes and move on to the next task.
+Once you have declared these two new resources, apply your changes and move on to the next task.
