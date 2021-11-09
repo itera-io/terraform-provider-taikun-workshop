@@ -1,12 +1,22 @@
-\section{Setup}
+\section{Local setup}
 
-You can choose to install Terraform and the Taikun provider on your machine and
+If you are on Linux or MacOS,
+you can choose to install Terraform and the Taikun provider on your machine and
 then download the workshop files.
 However, if you wish to use the prebuilt Docker image which already contains
-the workshop files, skip ahead to \fullref{sec:docker}.
+the workshop files skip ahead to \fullref{sec:docker}.
+
+\begin{warn}
+If your are using Windows, skip ahead to \fullref{sec:docker}.
+\end{warn}
 
 \subsection{Requirements}
-You must have Terraform version 0.14 or newer installed.
+\begin{itemize}
+  \item You must have Terraform version 0.14 or newer installed.
+  \item You will need Git to clone the provider's repo.
+  \item To build the provider, you will need either Docker or
+    the latest stable version of \href{https://golang.org/dl/}{Go}.
+\end{itemize}
 
 \subsection{Installing Terraform}
 You can install Terraform using one of the popular package managers, or manually by
@@ -55,13 +65,18 @@ sudo mv ~/Downloads/terraform /usr/local/bin/
 Until the provider is listed on Terraform's \href{https://registry.terraform.io/browse/providers}{plugin registry},
 the provider must be installed locally.\\
 
-Start by cloning its GitHub repo.
+Start by cloning its GitHub repo and switching into it.
 \begin{shell}
 git clone https://github.com/itera-io/terraform-provider-taikun.git
-\end{shell}
-Then run the following commands to install the provider on your machine.
-\begin{shell}
 cd terraform-provider-taikun
+\end{shell}
+If you have the Go toolchain installed,
+run the following command to build and install the provider on your machine.
+\begin{shell}
+make install
+\end{shell}
+Or if you wish to build it using docker, run:
+\begin{shell}
 make dockerinstall
 \end{shell}
 The provider will be installed at the following location.\\
