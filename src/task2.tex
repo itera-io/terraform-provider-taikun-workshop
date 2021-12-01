@@ -9,12 +9,12 @@ You will now create an alerting profile using a Slack configuration.
 
 \begin{enumerate}
   \item Start by declaring a Slack configuration.
-  \href{https://intuinewin.github.io/taikun-docs/resources/slack_configuration.html}{Here} is its documentation.\\
+  \href{https://registry.terraform.io/providers/itera-io/taikun/latest/docs/resources/slack_configuration}{Here} is its documentation.\\
 
 Its hook URL should be \texttt{https://hooks.myapp.example/ci}.
 It must send \textbf{alert-type notifications only} to the channel \texttt{ci}.
   \item You can now declare the alerting profile.
-    \href{https://intuinewin.github.io/taikun-docs/resources/alerting_profile.html}{Here} is its documentation.\\
+    \href{https://registry.terraform.io/providers/itera-io/taikun/latest/docs/resources/alerting_profile}{Here} is its documentation.\\
     The alerting profile should send notifications \textbf{daily} using the Slack configuration declared above.
 \end{enumerate}
 

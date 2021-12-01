@@ -73,7 +73,7 @@ Within one access profile, the names of SSH users must be unique.
 You can now declare the \texttt{taikun\_access\_profile} resource in \texttt{task5.tf}.
 You will use \texttt{for\_each} in a slightly different manner as \texttt{ssh\_user} is a nested resource
 within the \texttt{access\_profile} resource.
-\href{https://intuinewin.github.io/taikun-docs/resources/access_profile.html}{Here}
+\href{https://registry.terraform.io/providers/itera-io/taikun/latest/docs/resources/access_profile}{Here}
 is the documentation of the access profile resource.\\
 
 The access profile's requirements are:
@@ -84,7 +84,7 @@ The access profile's requirements are:
 \end{itemize}
 
 \begin{tip}
-While reading \href{https://intuinewin.github.io/taikun-docs/resources/access_profile.html}{access profile's schema},
+While reading \href{https://registry.terraform.io/providers/itera-io/taikun/latest/docs/resources/access_profile#schema}{access profile's schema},
 you may notice \texttt{dns\_server} and \texttt{ntp\_server} are of the type \textit{Block List}.\\
 
 Going back to the pizza order example, here is how block lists are used.
@@ -132,9 +132,13 @@ will be of use.
 \vfill
 {\Large{Spoiler ahead!}}
 \vfill
+\textbf{Solution:}\\
+Add the following \texttt{dynamic "ssh\_user"} block to your access profile's
+configuration.
 \begin{tf}
 resource "taikun_access_profile" "..." {
 
+  # Rest of configuration: DNS servers, NTP servers, etc.
   # ...
   
   dynamic "ssh_user" {
