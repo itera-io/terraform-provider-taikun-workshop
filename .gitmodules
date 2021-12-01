@@ -1,3 +1,0 @@
-[submodule "assets/terraform-provider-taikun"]
-	path = assets/terraform-provider-taikun
-	url = https://github.com/itera-io/terraform-provider-taikun.git
