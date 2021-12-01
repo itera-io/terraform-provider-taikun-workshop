@@ -48,11 +48,11 @@ In this example, user accounts are defined for Alice and Bob.
 \end{itemize}
 Now edit \texttt{users.auto.tfvars} and define three users.
 \begin{itemize}
-  \item \texttt{tfws-<firstname>-manager} with Manager role and the email \texttt{tfws-<firstname>-manager@mail.example}.
-  \item \texttt{tfws-<firstname>-user1} with User role and the email \texttt{tfws-<firstname>-user1@mail.example}.
-  \item \texttt{tfws-<firstname>-user2} with User role and the email \texttt{tfws-<firstname>-user2@mail.example}.
+  \item \texttt{<name>-manager} with Manager role and the email \texttt{<name>-manager@mail.example}.
+  \item \texttt{<name>-user1} with User role and the email \texttt{<name>-user1@mail.example}.
+  \item \texttt{<name>-user2} with User role and the email \texttt{<name>-user2@mail.example}.
 \end{itemize}
-As always, replace \texttt{<firstname>} with your firstname.\\
+Replace \texttt{<name>} with a name of your choosing.\\
 
 You can now declare the user resource in \texttt{task4.tf}, the users must belong to the organization created in \fullref{sec:task0}.
 \href{https://registry.terraform.io/providers/itera-io/taikun/latest/docs/resources/user}{Here} is its documentation.

@@ -28,13 +28,14 @@ Once Terraform has been initialized correctly, you can declare your organization
 Create \texttt{task0.tf} and write the following configuration block to it.
 \begin{tf}
 resource "taikun_organization" "myorg" {
-  name          = "tfws-<firstname>-<s>"
-  full_name     = "<s>"
+  name          = "<name>"
+  full_name     = "<full-name>"
   discount_rate = 120
 }
 \end{tf}
-Be sure to replace \texttt{<firstname>} with your firstname and \texttt{<s>} with
-names of your choosing. You can also choose another label instead of \texttt{myorg}.
+Be sure to replace \texttt{<name>} and \texttt{<full-name>} with
+names of your choosing.
+You can also choose another label instead of \texttt{myorg}.
 
 \begin{tip}
 Notice the syntax of the configuration block, as you are creating a resource,
@@ -97,7 +98,7 @@ resource "taikun_organization" "myorg" {
     is_read_only                     = false
     lock                             = false
     managers_can_change_subscription = true
-    name                             = "tfws-jane-org"
+    name                             = "my-organization"
     partner_id                       = "119"
     partner_name                     = "TF-CI"
     projects                         = 0
