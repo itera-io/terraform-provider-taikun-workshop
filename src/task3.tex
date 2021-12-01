@@ -6,9 +6,13 @@ at the root of the \texttt{workshop/} directory.\\
 You will also be editing \texttt{task3.auto.tfvars}.
 \end{note}
 
+\begin{warn}
+You will need OpenStack credentials to complete this task.
+\end{warn}
+
 Cloud credentials are needed to create a Taikun project.
-You will be using the OpenStack credentials provided on the \textbf{\#terraform-workshop}
-Slack channel. In a real work environment, cloud credentials should not be stored under version control;
+In a real work environment,
+cloud credentials should not be stored under version control;
 Terraform's input variables help solve this problem.\\
 
 Variables are declared in \texttt{variables.tf} by convention.
@@ -87,7 +91,7 @@ variable "openstack_project" {
 \end{note}
 
 Now that the OpenStack variables have been declared,
-define the variables using the credentials provided on \textbf{\#terraform-workshop}, in \texttt{task3.auto.tfvars}.\\
+define the variables in \texttt{task3.auto.tfvars} using your credentials.\\
 
 Terraform must be told through command line arguments which \texttt{.tfvars} files to read.
 However, if variable definition files have the extension \texttt{.auto.tfvars}, as is the case with
