@@ -1,21 +1,21 @@
-\section{Setup using Docker}\label{sec:docker}
+\subsection{Setup using Docker}\label{sec:docker}
 
-\subsection{Requirements}
+\subsubsection{Requirements}
 You must have Docker and Git installed.
 
-\subsection{Setup}
+\subsubsection{Setup}
 Start by cloning the workshop repository.
 \begin{shell}
 git clone --recursive https://github.com/itera-io/terraform-provider-taikun-workshop.git
 \end{shell}
 
-\subsection{Docker image creation}
+\subsubsection{Docker image creation}
 You'll need to build the image, this operation can take several minutes.
 \begin{shell}
 DOCKER_BUILDKIT=1 docker build --rm --target bin -t tf-workshop .
 \end{shell}
 
-\subsection{Docker container creation}
+\subsubsection{Docker container creation}
 To create the Docker container, run one of the following commands from the root of \\
 \texttt{terrraform-provider-taikun-workshop}.
 \begin{itemize}
@@ -34,14 +34,14 @@ In other words, you will need to run \texttt{terraform} commands from within
 the container shell, however you can edit the files in \texttt{workshop/}
 with the editor of your choice on your machine.\\
 
-\subsection{Restarting the Docker container}
+\subsubsection{Restarting the Docker container}
 You can exit the container at any time without losing your progress.
 If you have exited the Docker container, run the following command to restart it.
 \begin{shell}
 docker start -i tf-workshop
 \end{shell}
 
-\subsection{Text editing within the container}
+\subsubsection{Text editing within the container}
 If you wish to edit the files in \texttt{workshop/} from within the container,
 the Docker image has the \texttt{vim}, \texttt{micro} and \texttt{nano} packages installed.
 If you are unfamiliar with Nano and Vim keybindings, the Micro editor

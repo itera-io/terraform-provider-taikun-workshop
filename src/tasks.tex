@@ -1,9 +1,8 @@
 \section{Documentation}
-Once the provider has been added to the Terraform Registry, the documentation will be available online there.
-For the purpose of this workshop, the documentation is being temporarily hosted on \href{https://intuinewin.github.io/taikun-docs/}{Github Pages}.
+The provider documentation is available on the \href{https://registry.terraform.io/providers/itera-io/taikun/latest/docs}{Terraform Registry}.
 
 \section{Tasks}
-The ultimate goal of this workshop is to have an operational Taikun project built solely with Terraform
+The end goal of this workshop is to have an operational Taikun project built solely with Terraform
 configuration files.
 By following a step by step process, you will discover how various Taikun
 resources are declared and managed using Terraform.\\
@@ -15,14 +14,16 @@ All your work will be done in the \texttt{workshop/} directory. These are its in
 |-- taikun_auth.auto.tfvars
 |-- variables.tf
 \end{raw}
-\texttt{main.tf} contains the Provider configuration, namely where it is installed
-and what credentials to use. You will not need to edit this file.
+\texttt{main.tf} contains the Provider configuration,
+namely its source address and what credentials to use.
+You will not need to edit this file.
 \begin{tf}
 # main.tf
 terraform {
   required_providers {
     taikun = {
-      source = "itera-io/dev/taikun"
+      source = "itera-io/taikun"
+      version = "1.0.0"
     }
   }
 }

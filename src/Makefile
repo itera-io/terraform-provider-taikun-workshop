@@ -5,7 +5,8 @@ RM = rm -rf
 
 SRC = main.tex \
       intro.tex \
-      setup_unix.tex \
+      setup.tex \
+      setup_local.tex \
       setup_docker.tex \
       $(wildcard task*.tex) \
       $(wildcard assets/*) \
