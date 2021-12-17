@@ -9,4 +9,4 @@ COPY . .
 RUN make all
 
 FROM scratch AS bin
-COPY --from=build /src/terraform-taikun-workshop-*.pdf /
+COPY --from=build /src/terraform-taikun-workshop.pdf /
