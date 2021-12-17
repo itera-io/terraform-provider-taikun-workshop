@@ -4,8 +4,4 @@
 
 The `workshop/` directory contains the files required at the start of the workshop.
 
-As the Provider is not yet listed on the Terraform registry, the documentation is not available online.
-The `docs/` directory thus contains the documentation for the provider in HTML format, built using [mdBook](https://github.com/rust-lang/mdBook).
-It should be provided to the participants with `docs/index.md` as its starting point.
-
-The LaTex sources for the workshop manuals are located in the `src/` directory.
+The LaTeX sources for the workshop manual are located in the `src/` directory.
